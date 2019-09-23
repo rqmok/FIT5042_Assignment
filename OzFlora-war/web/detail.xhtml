@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>#{ titleController.title }</title>
+        <ui:include src="/WEB-INF/head.xhtml" />
+    </h:head>
+    <h:body>
+        <ui:include src="/WEB-INF/menu.xhtml" />
+
+        <div class="grid-x medium-grid-frame grid-padding-x grid-padding-y">
+            <div class="cell medium-4">
+                <h:graphicImage url="#{ plantController.plant.imageUrl }" />
+            </div>
+            <div class="cell grid-y grid-padding-x medium-cell-block-container medium-auto">
+                <div class="cell shrink header medium-cell-block-container">
+                    <h1>#{ plantController.plant.name }</h1>
+                    <div class="grid-x grid-padding-x">
+                        <div class="cell medium-4">
+                            <h6>Family: #{ plantController.plant.family }</h6>
+                        </div>
+                    </div>
+                </div>
+                <div class="cell grid-x grid-padding-x">
+                    <h:outputText value="#{ plantController.plant.description }" />
+                </div>
+            </div>
+        </div>
+
+        <ui:include src="/WEB-INF/body.xhtml" />
+    </h:body>
+</html>
+
