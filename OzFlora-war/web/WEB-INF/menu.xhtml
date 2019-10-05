@@ -22,6 +22,9 @@
                     <h:outputLink value="login.xhtml" rendered="#{ empty user }">Login</h:outputLink>
                 </li>
                 <li>
+                    <h:outputLink value="profile.xhtml" rendered="#{ not empty user }">Profile</h:outputLink>
+                </li>
+                <li>
                     <h:form>
                         <h:commandLink action="#{ loginController.logout }" rendered="#{ not empty user }">Logout</h:commandLink>
                     </h:form>

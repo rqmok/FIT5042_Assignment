@@ -89,7 +89,7 @@ public class LoginController implements Serializable {
             logger.log(Level.SEVERE, e.getMessage());
         }
         
-        logger.info("Authenticated user " + principal.getName());
+        logger.log(Level.INFO, "Authenticated user {0}", principal.getName());
         
         ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
         externalContext.getSessionMap().put("user", user);

@@ -6,6 +6,7 @@
 package com.fit5042.ozflora.repository;
 
 import com.fit5042.ozflora.auth.entities.User;
+import com.fit5042.ozflora.repository.entities.Plant;
 import javax.ejb.Remote;
 
 /**
@@ -32,4 +33,22 @@ public interface UserRepository {
      * @throws java.lang.Exception
      */
     User findUserById(String id) throws Exception;
+    
+    /**
+     * Save a given {@link Plant} to the given {@link User}.
+     * 
+     * @param user The {@link User} to add the {@link Plant} to.
+     * @param plant The {@link Plant} to save.
+     * @throws java.lang.Exception
+     */
+    void savePlantToUser(User user, Plant plant) throws Exception;
+    
+    /**
+     * Remove a given {@link Plant} from the given {@link User}.
+     * 
+     * @param user The {@link User} to remove the {@link Plant} from.
+     * @param plant The {@link Plant} to remove.
+     * @throws java.lang.Exception
+     */
+    void removePlantFromUser(User user, Plant plant) throws Exception;
 }

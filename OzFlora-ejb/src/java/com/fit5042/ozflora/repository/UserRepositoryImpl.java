@@ -8,8 +8,10 @@ package com.fit5042.ozflora.repository;
 import com.fit5042.ozflora.auth.AuthenticationUtils;
 import com.fit5042.ozflora.auth.entities.User;
 import com.fit5042.ozflora.auth.entities.UserGroup;
+import com.fit5042.ozflora.repository.entities.Plant;
 import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
+import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ejb.LocalBean;
@@ -49,6 +51,18 @@ public class UserRepositoryImpl implements UserRepository {
     @Override
     public User findUserById(String id) throws Exception {
         return entityManager.find(User.class, id);
+    }
+
+    @Override
+    public void savePlantToUser(User user, Plant plant) throws Exception {
+        user.addPlant(plant);
+        entityManager.merge(user);
+    }
+
+    @Override
+    public void removePlantFromUser(User user, Plant plant) throws Exception {
+        user.removePlant(plant);
+        entityManager.merge(user);
     }
     
 }

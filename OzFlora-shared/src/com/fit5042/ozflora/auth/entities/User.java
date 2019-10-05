@@ -5,12 +5,18 @@
  */
 package com.fit5042.ozflora.auth.entities;
 
+import com.fit5042.ozflora.repository.entities.Plant;
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -34,6 +40,9 @@ public class User implements Serializable {
 
     @Column(name = "password", nullable = false, length = 64)
     private String password;
+    
+    @OneToMany(fetch = FetchType.EAGER)
+    private Set<Plant> plants;
 
     public User() {
     }
@@ -42,6 +51,7 @@ public class User implements Serializable {
         this.email = email;
         this.name = name;
         this.password = password;
+        this.plants = new HashSet<>();
     }
 
     public String getEmail() {
@@ -66,6 +76,22 @@ public class User implements Serializable {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public Set<Plant> getPlants() {
+        return plants;
+    }
+
+    public void setPlants(Set<Plant> plants) {
+        this.plants = plants;
+    }
+    
+    public void addPlant(Plant plant) {
+        this.plants.add(plant);
+    }
+    
+    public void removePlant(Plant plant) {
+        this.plants.remove(plant);
     }
 
     @Override
