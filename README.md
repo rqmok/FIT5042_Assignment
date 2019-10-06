@@ -13,6 +13,6 @@ OzFlora - Native Plants
 5. Open Glassgish server admin console.
 6. Under Configurations > server-config > Security > Realms, create a new jdbc realm with the following settings:
 
-![JDBC Realm Settings](https://github.com/rqmok/FIT5042_Assignment/jdbc-realm-settings.png "JDBC Realm Settings")
+![JDBC Realm Settings](https://github.com/rqmok/FIT5042_Assignment/blob/master/jdbc-realm-settings.png "JDBC Realm Settings")
 
 7. Once the realm is saved, it should be possible to start the enterprise application with user login and registration.
