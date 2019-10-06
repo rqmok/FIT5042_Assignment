@@ -108,5 +108,16 @@ public class PlantManagedBean implements Serializable {
             logger.log(Level.SEVERE, null, e);
         }
     }
+    
+    public List<Plant> getPlants(String name, String description, String family) {
+        try {
+            return this.plantRepository.searchPlants(name, description, family);
+        } catch (Exception e) {
+            logger.log(Level.SEVERE, null, e);
+        }
+        
+        // Exception occured. Return nothing.
+        return null;
+    }
 
 }

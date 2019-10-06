@@ -2,13 +2,41 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>#{ titleController.title }</title>
         <ui:include src="/WEB-INF/head.xhtml" />
     </h:head>
     <h:body>
         <ui:include src="/WEB-INF/menu.xhtml" />
+
+        <h:form id="plantsSearchForm">
+            <div class="grid-container fluid" style="margin-top: 20px;">
+                <div class="grid-x grid-margin-x">
+                    <div class="cell medium-4">
+                        <h:outputLabel for="nameSearchField">Name: </h:outputLabel>
+                        <h:inputText id="nameSearchField" value="#{ plantsController.plantName }" />
+                    </div>
+                    
+                    <div class="cell medium-4">
+                        <h:outputLabel for="descriptionSearchField">Description: </h:outputLabel>
+                        <h:inputText id="descriptionSearchField" value="#{ plantsController.plantDescription }" />
+                    </div>
+                    
+                    <div class="cell medium-4">
+                        <h:outputLabel for="familySearchField">Family: </h:outputLabel>
+                        <h:inputText id="familySearchField" value="#{ plantsController.plantFamily }" />
+                    </div>
+                    
+                    <div class="cell auto">
+                        <h:commandButton class="button" value="Search" action="#{ plantsController.searchPlants }">
+                            <f:ajax execute="@form" render="plantsForm" />
+                        </h:commandButton>
+                    </div>
+                </div>
+            </div>
+        </h:form>
 
         <h:form id="plantsForm">
             <div class="grid-container fluid" style="margin-top: 20px;">

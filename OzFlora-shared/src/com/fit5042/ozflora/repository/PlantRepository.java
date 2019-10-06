@@ -54,4 +54,15 @@ public interface PlantRepository {
      * @throws Exception 
      */
     public Plant searchPlantById(int id) throws Exception;
+    
+    /**
+     * Search for {@link Plant Plants} by their properties.
+     * 
+     * @param name The name to search for.
+     * @param description The description to search for.
+     * @param family The family to search for.
+     * @return The found {@link List} of {@link Plant Plants}.
+     * @throws Exception 
+     */
+    public List<Plant> searchPlants(String name, String description, String family) throws Exception;
 }

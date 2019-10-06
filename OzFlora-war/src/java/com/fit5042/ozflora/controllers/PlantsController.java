@@ -28,6 +28,11 @@ public class PlantsController implements Serializable {
     private PlantManagedBean plantManagedBean;
     
     private List<Plant> plants;
+    
+    // Searching fields.
+    private String plantName;
+    private String plantDescription;
+    private String plantFamily;
 
     /**
      * Creates a new instance of PlantsController
@@ -65,6 +70,34 @@ public class PlantsController implements Serializable {
 
     public void setPlantManagedBean(PlantManagedBean plantManagedBean) {
         this.plantManagedBean = plantManagedBean;
+    }
+
+    public String getPlantName() {
+        return plantName;
+    }
+
+    public void setPlantName(String plantName) {
+        this.plantName = plantName;
+    }
+
+    public String getPlantDescription() {
+        return plantDescription;
+    }
+
+    public void setPlantDescription(String plantDescription) {
+        this.plantDescription = plantDescription;
+    }
+
+    public String getPlantFamily() {
+        return plantFamily;
+    }
+
+    public void setPlantFamily(String plantFamily) {
+        this.plantFamily = plantFamily;
+    }
+    
+    public void searchPlants() {
+        this.plants = this.plantManagedBean.getPlants(plantName, plantDescription, plantFamily);
     }
     
 }
