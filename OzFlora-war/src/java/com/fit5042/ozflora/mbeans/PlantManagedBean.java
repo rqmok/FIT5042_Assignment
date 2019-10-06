@@ -5,7 +5,6 @@
  */
 package com.fit5042.ozflora.mbeans;
 
-import com.fit5042.ozflora.auth.entities.User;
 import com.fit5042.ozflora.controllers.LoginController;
 import com.fit5042.ozflora.repository.PlantRepository;
 import com.fit5042.ozflora.repository.UserRepository;

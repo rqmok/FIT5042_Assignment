@@ -6,6 +6,7 @@
 package com.fit5042.ozflora.controllers;
 
 import com.fit5042.ozflora.auth.entities.User;
+import com.fit5042.ozflora.auth.entities.UserGroup;
 import com.fit5042.ozflora.repository.UserRepository;
 import java.io.Serializable;
 import java.security.Principal;
@@ -93,6 +94,15 @@ public class LoginController implements Serializable {
         
         ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
         externalContext.getSessionMap().put("user", user);
+        
+        if (user != null) {
+            try {
+                UserGroup userGroup = this.userRepository.findUserGroupById(user.getEmail());
+                externalContext.getSessionMap().put("user_group", userGroup);
+            } catch (Exception e) {
+                logger.log(Level.SEVERE, e.getMessage());
+            }
+        }
         
         return "index?faces-redirect=true";
     }

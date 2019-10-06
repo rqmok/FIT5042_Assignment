@@ -6,6 +6,7 @@
 package com.fit5042.ozflora.repository;
 
 import com.fit5042.ozflora.auth.entities.User;
+import com.fit5042.ozflora.auth.entities.UserGroup;
 import com.fit5042.ozflora.repository.entities.Plant;
 import javax.ejb.Remote;
 
@@ -33,6 +34,15 @@ public interface UserRepository {
      * @throws java.lang.Exception
      */
     User findUserById(String id) throws Exception;
+    
+    /**
+     * Find the {@link UserGroup} for the given user ID.
+     * 
+     * @param id The ID of the {@link UserGroup}.
+     * @return The found {@link UserGroup}, and null if not found.
+     * @throws java.lang.Exception
+     */
+    UserGroup findUserGroupById(String id) throws Exception;
     
     /**
      * Save a given {@link Plant} to the given {@link User}.

@@ -5,6 +5,8 @@
     <class>com.fit5042.ozflora.repository.entities.Plant</class>
     <class>com.fit5042.ozflora.auth.entities.User</class>
     <class>com.fit5042.ozflora.auth.entities.UserGroup</class>
+    <class>com.fit5042.ozflora.auth.entities.WebsiteUser</class>
+    <class>com.fit5042.ozflora.auth.entities.WorkerUser</class>
     <exclude-unlisted-classes>true</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.schema-generation.database.action" value="create"/>

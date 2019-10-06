@@ -6,6 +6,7 @@
 package com.fit5042.ozflora.controllers;
 
 import com.fit5042.ozflora.auth.entities.User;
+import com.fit5042.ozflora.auth.entities.WebsiteUser;
 import com.fit5042.ozflora.repository.UserRepository;
 import java.io.Serializable;
 import java.util.logging.Level;
@@ -45,7 +46,7 @@ public class RegisterController implements Serializable {
     }
     
     public String register() {
-        User user = new User(email, name, password);
+        User user = new WebsiteUser(email, name, password);
         
         try {
             this.userRepository.createUser(user);
