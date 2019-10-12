@@ -8,6 +8,7 @@ package com.fit5042.ozflora.repository;
 import com.fit5042.ozflora.auth.entities.User;
 import com.fit5042.ozflora.auth.entities.UserGroup;
 import com.fit5042.ozflora.repository.entities.Plant;
+import java.util.List;
 import javax.ejb.Remote;
 
 /**
@@ -61,4 +62,12 @@ public interface UserRepository {
      * @throws java.lang.Exception
      */
     void removePlantFromUser(User user, Plant plant) throws Exception;
+    
+    /**
+     * Get all the users in the database.
+     * 
+     * @return A {@link List} of all {@link User Users}.
+     * @throws Exception 
+     */
+    List<User> getAllUsers() throws Exception;
 }

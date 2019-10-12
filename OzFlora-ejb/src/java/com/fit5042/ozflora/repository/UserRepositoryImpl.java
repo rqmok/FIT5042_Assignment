@@ -13,6 +13,7 @@ import com.fit5042.ozflora.auth.entities.WorkerUser;
 import com.fit5042.ozflora.repository.entities.Plant;
 import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ejb.LocalBean;
@@ -82,6 +83,11 @@ public class UserRepositoryImpl implements UserRepository {
         } else {
             throw new IllegalArgumentException("Plants can only be removed by web site users.");
         }
+    }
+
+    @Override
+    public List<User> getAllUsers() throws Exception {
+        return this.entityManager.createNamedQuery(User.GET_ALL_QUERY_NAME).getResultList();
     }
     
 }

@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <h:head>
+        <title>#{ titleController.title }</title>
+        <ui:include src="/WEB-INF/head.xhtml" />
+    </h:head>
+    <h:body>
+        <ui:include src="/WEB-INF/menu.xhtml" />
+
+        <div class="grid-x">
+            <div class="cell small-1">
+                <h:button value="Add User" outcome="#" class="button" />
+            </div>
+        </div>
+
+        <h:dataTable value="#{ manageUsersController.users }"
+                     var="user"
+                     styleClass="table">
+            
+            <c:set var="groupName" value="#{ manageUsersController.getUserGroup(user).groupName }" />
+
+            <h:column>
+                <f:facet name="header">Name</f:facet>
+                #{ user.name }
+            </h:column>
+
+            <h:column>
+                <f:facet name="header">Email Address</f:facet>
+                #{ user.email } 
+            </h:column>
+
+            <h:column>
+                <f:facet name="header">Group</f:facet>
+                #{ groupName }
+            </h:column>
+            
+            <h:column>
+                <h:form id="editUserLinkForm" rendered="#{ groupName != 'admin' }">
+                    <h:commandButton class="button" value="Edit" />
+                </h:form>
+            </h:column>
+            
+            <h:column>
+                <h:form id="deleteuserLinkForm" rendered="#{ groupName != 'admin' }">
+                    <h:commandButton class="alert button" value="Delete" />
+                </h:form>
+            </h:column>
+
+        </h:dataTable>
+
+        <ui:include src="/WEB-INF/body.xhtml" />
+    </h:body>
+</html>
+

@@ -25,6 +25,9 @@
         <div class="top-bar-right">
             <ul class="menu">
                 <li>
+                    <h:outputLink value="manageusers.xhtml" rendered="#{ loginController.userGroup.groupName == 'admin' }">Manage Users</h:outputLink>
+                </li>
+                <li>
                     <h:outputLink value="login.xhtml" rendered="#{ empty user }">Login</h:outputLink>
                 </li>
                 <li>

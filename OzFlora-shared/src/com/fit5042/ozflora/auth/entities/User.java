@@ -5,6 +5,7 @@
  */
 package com.fit5042.ozflora.auth.entities;
 
+import com.fit5042.ozflora.repository.entities.Plant;
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
@@ -13,6 +14,8 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 /**
@@ -26,7 +29,11 @@ import javax.persistence.Table;
 @DiscriminatorColumn(name = "USER_TYPE",
         discriminatorType = DiscriminatorType.STRING,
         length = 1)
+@NamedQueries({
+    @NamedQuery(name = User.GET_ALL_QUERY_NAME, query = "SELECT u FROM User u ORDER BY u.email")})
 public abstract class User implements Serializable {
+    
+    public static final String GET_ALL_QUERY_NAME = "User.getAll";
 
     @Id
     @Column(name = "email", nullable = false, length = 255)
