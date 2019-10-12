@@ -47,12 +47,12 @@
                 <div class="cell grid-x grid-padding-x">
                     <h:form id="editPlantForm">
                         <h:commandButton class="button cell small-1" value="Edit" action="editplant.xhtml"
-                                         rendered="#{ loginController.userGroup.groupName != 'users' }">
+                                         rendered="#{ loginController.userGroup.groupName == 'workers' or loginController.userGroup.groupName == 'admin' }">
                             <f:param name="plantId" value="#{ plantController.plant.id }" />
                         </h:commandButton>
                         
                         <h:commandButton class="alert button cell small-1" value="Delete" action="#{ plantController.delete() }"
-                                         rendered="#{ loginController.userGroup.groupName != 'users' }" />
+                                         rendered="#{ loginController.userGroup.groupName == 'workers' or loginController.userGroup.groupName == 'admin' }" />
                     </h:form>
                 </div>
             </div>

@@ -11,7 +11,8 @@
             <ul class="menu">
                 <li><h:outputLink value="index.xhtml">Home</h:outputLink></li>
                 <li>
-                    <h:outputLink value="addplant.xhtml" rendered="#{ loginController.userGroup.groupName != 'users' }">
+                    <h:outputLink value="addplant.xhtml"
+                                  rendered="#{ loginController.userGroup.groupName == 'workers' or loginController.userGroup.groupName == 'admin' }">
                         Add Plant
                     </h:outputLink>
                 </li>
