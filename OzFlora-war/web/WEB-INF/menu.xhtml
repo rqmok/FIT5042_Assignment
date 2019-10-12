@@ -10,6 +10,11 @@
         <div class="top-bar-left">
             <ul class="menu">
                 <li><h:outputLink value="index.xhtml">Home</h:outputLink></li>
+                <li>
+                    <h:outputLink value="addplant.xhtml" rendered="#{ loginController.userGroup.groupName != 'users' }">
+                        Add Plant
+                    </h:outputLink>
+                </li>
                 <li><h:outputLink value="plants.xhtml">Plants</h:outputLink></li>
                 <li><h:outputLink value="contact.xhtml">Contact</h:outputLink></li>
                 <li><h:outputLink value="about.xhtml">About</h:outputLink></li>

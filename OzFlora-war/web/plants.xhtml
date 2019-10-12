@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
     <h:head>
         <title>#{ titleController.title }</title>
         <ui:include src="/WEB-INF/head.xhtml" />
@@ -14,22 +15,19 @@
         <h:form id="plantsSearchForm">
             <div class="grid-container fluid" style="margin-top: 20px;">
                 <div class="grid-x grid-margin-x">
-                    <div class="cell medium-4">
-                        <h:outputLabel for="nameSearchField">Name: </h:outputLabel>
-                        <h:inputText id="nameSearchField" value="#{ plantsController.plantName }" />
-                    </div>
-                    
-                    <div class="cell medium-4">
-                        <h:outputLabel for="descriptionSearchField">Description: </h:outputLabel>
-                        <h:inputText id="descriptionSearchField" value="#{ plantsController.plantDescription }" />
-                    </div>
-                    
-                    <div class="cell medium-4">
-                        <h:outputLabel for="familySearchField">Family: </h:outputLabel>
-                        <h:inputText id="familySearchField" value="#{ plantsController.plantFamily }" />
-                    </div>
-                    
                     <div class="cell auto">
+                        <h:inputText id="nameSearchField" value="#{ plantsController.plantName }" a:placeholder="Name" />
+                    </div>
+
+                    <div class="cell auto">
+                        <h:inputText id="descriptionSearchField" value="#{ plantsController.plantDescription }" a:placeholder="Description" />
+                    </div>
+
+                    <div class="cell auto">
+                        <h:inputText id="familySearchField" value="#{ plantsController.plantFamily }" a:placeholder="Family" />
+                    </div>
+
+                    <div class="cell small-1">
                         <h:commandButton class="button" value="Search" action="#{ plantsController.searchPlants }">
                             <f:ajax execute="@form" render="plantsForm" />
                         </h:commandButton>

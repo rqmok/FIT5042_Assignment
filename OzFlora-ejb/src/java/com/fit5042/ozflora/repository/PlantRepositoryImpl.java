@@ -38,7 +38,7 @@ public class PlantRepositoryImpl implements PlantRepository {
     @Override
     public void addPlant(Plant plant) throws Exception {
         List<Plant> plants = this.entityManager.createNamedQuery(Plant.GET_ALL_QUERY_NAME).getResultList();
-        plant.setId(plants.get(0).getId() + 1);
+        plant.setId(plants.get(plants.size() - 1).getId() + 1);
         entityManager.persist(plant);
     }
 
@@ -90,6 +90,13 @@ public class PlantRepositoryImpl implements PlantRepository {
         query.where(builder.and(predicates.toArray(new Predicate[predicates.size()])));
         
         return entityManager.createQuery(query).getResultList();
+    }
+
+    @Override
+    public void savePlant(Plant plant) throws Exception {
+        if (plant != null) {
+            entityManager.merge(plant);
+        }
     }
 
 }

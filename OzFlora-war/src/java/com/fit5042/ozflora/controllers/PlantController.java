@@ -8,11 +8,12 @@ package com.fit5042.ozflora.controllers;
 import com.fit5042.ozflora.mbeans.PlantManagedBean;
 import com.fit5042.ozflora.repository.UserRepository;
 import com.fit5042.ozflora.repository.entities.Plant;
+import java.io.Serializable;
 import javax.ejb.EJB;
 import javax.el.ELContext;
-import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 import javax.faces.bean.ManagedProperty;
+import javax.faces.view.ViewScoped;
 import javax.faces.context.FacesContext;
 
 /**
@@ -20,8 +21,8 @@ import javax.faces.context.FacesContext;
  * @author Zeeshan
  */
 @Named(value = "plantController")
-@RequestScoped
-public class PlantController {
+@ViewScoped
+public class PlantController implements Serializable {
 
     @ManagedProperty(value = "#{ plantManagedBean }")
     private final PlantManagedBean plantManagedBean;
@@ -65,6 +66,11 @@ public class PlantController {
 
     public void unsavePlant() {
         plantManagedBean.unsavePlant(plant);
+    }
+    
+    public String delete() {
+        plantManagedBean.removePlantById(plant.getId());
+        return "plants?faces-redirect=true";
     }
 
 }

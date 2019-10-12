@@ -141,5 +141,13 @@ public class PlantManagedBean implements Serializable {
         // Exception occured. Return nothing.
         return null;
     }
+    
+    public void updatePlant(Plant plant) {
+        try {
+            this.plantRepository.savePlant(plant);
+        } catch (Exception e) {
+            logger.log(Level.SEVERE, null, e);
+        }
+    }
 
 }

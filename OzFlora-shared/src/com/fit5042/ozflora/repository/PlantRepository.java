@@ -65,4 +65,12 @@ public interface PlantRepository {
      * @throws Exception 
      */
     public List<Plant> searchPlants(String name, String description, String family) throws Exception;
+    
+    /**
+     * Save the plant to the database.
+     * 
+     * @param plant The {@link Plant} to save to the database.
+     * @throws Exception 
+     */
+    public void savePlant(Plant plant) throws Exception;
 }

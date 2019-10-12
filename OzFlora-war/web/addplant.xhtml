@@ -1,0 +1,91 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>#{ titleController.title } - Edit</title>
+        <ui:include src="/WEB-INF/head.xhtml" />
+    </h:head>
+    <h:body>
+        <ui:include src="/WEB-INF/menu.xhtml" />
+
+        <h:form id="editPlantForm">
+            
+            <div class="grid-container">
+                
+                <!-- Name -->
+                <div class="grid-x grid-padding-x">
+                    <div class="small-1 cell">
+                        <h:outputLabel for="name">Name:</h:outputLabel>
+                    </div>
+                    
+                    <div class="small-6 cell">
+                        <h:inputText id="name" value="#{ addPlantController.name }"
+                                     required="true" requiredMessage="Please enter the plant's name"
+                                     validatorMessage="Name should be no more than 255 characters">
+                            <f:validateLength maximum="255" />
+                        </h:inputText>
+                    </div>
+                </div>
+                
+                <!-- Family -->
+                <div class="grid-x grid-padding-x">
+                    <div class="small-1 cell">
+                        <h:outputLabel for="family">Family:</h:outputLabel>
+                    </div>
+                    
+                    <div class="small-6 cell">
+                        <h:inputText id="family" value="#{ addPlantController.family }"
+                                     required="true" requiredMessage="Please enter the plant's family"
+                                     validatorMessage="Family should be no more than 255 characters">
+                            <f:validateLength maximum="255" />
+                        </h:inputText>
+                    </div>
+                </div>
+                
+                <!-- Image URL -->
+                <div class="grid-x grid-padding-x">
+                    <div class="small-1 cell">
+                        <h:outputLabel for="image">Image URL:</h:outputLabel>
+                    </div>
+                    
+                    <div class="small-6 cell">
+                        <h:inputText id="image" value="#{ addPlantController.imageUrl }"
+                                     required="true" requiredMessage="Please enter the plant's image URL"
+                                     validatorMessage="Image URL should be no more than 255 characters">
+                            <f:validateLength maximum="255" />
+                        </h:inputText>
+                    </div>
+                </div>
+                
+                <!-- Description -->
+                <div class="grid-x grid-padding-x">
+                    <div class="small-1 cell">
+                        <h:outputLabel for="description">Description:</h:outputLabel>
+                    </div>
+                    
+                    <div class="small-6 cell">
+                        <h:inputTextarea id="description" value="#{ addPlantController.description }"
+                                     required="true" requiredMessage="Please enter the plant's description"
+                                     validatorMessage="Description should be no more than 255 characters"
+                                     rows="3">
+                            <f:validateLength maximum="255" />
+                        </h:inputTextarea>
+                    </div>
+                </div>
+                
+                <div class="grid-x grid-padding-x">
+                    <div class="cell">
+                        <h:commandButton class="success button" value="Save" action="#{ addPlantController.addPlant }" />
+                    </div>
+                </div>
+            </div>
+            
+        </h:form>
+
+        <ui:include src="/WEB-INF/body.xhtml" />
+    </h:body>
+</html>
+

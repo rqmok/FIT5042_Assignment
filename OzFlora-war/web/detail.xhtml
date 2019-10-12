@@ -32,17 +32,27 @@
 
                 <div class="cell grid-x grid-padding-x">
                     <h:form id="savePlantForm" rendered="#{ loginController.user != null and loginController.userGroup.groupName == 'users' }">
-                        <h:commandButton class="button" value="Save" action="#{ plantController.savePlant }"
+                        <h:commandButton class="success button" value="Save" action="#{ plantController.savePlant }"
                                          rendered="#{ not loginController.user.plants.contains(plantController.plant) }">
-                            <f:param name="plantId" value="#{ plant.id }" />
                             <f:ajax execute="@form" render="@form" />
+                        </h:commandButton>
+
+                        <h:commandButton class="alert button" value="Saved" action="#{ plantController.unsavePlant }"
+                                         rendered="#{ loginController.user.plants.contains(plantController.plant) }">
+                            <f:ajax execute="@form" render="@form" />
+                        </h:commandButton>
+                    </h:form>
+                </div>
+
+                <div class="cell grid-x grid-padding-x">
+                    <h:form id="editPlantForm">
+                        <h:commandButton class="button cell small-1" value="Edit" action="editplant.xhtml"
+                                         rendered="#{ loginController.userGroup.groupName != 'users' }">
+                            <f:param name="plantId" value="#{ plantController.plant.id }" />
                         </h:commandButton>
                         
-                        <h:commandButton class="button" value="Saved" action="#{ plantController.unsavePlant }"
-                                         rendered="#{ loginController.user.plants.contains(plantController.plant) }">
-                            <f:param name="plantId" value="#{ plant.id }" />
-                            <f:ajax execute="@form" render="@form" />
-                        </h:commandButton>
+                        <h:commandButton class="alert button cell small-1" value="Delete" action="#{ plantController.delete() }"
+                                         rendered="#{ loginController.userGroup.groupName != 'users' }" />
                     </h:form>
                 </div>
             </div>
