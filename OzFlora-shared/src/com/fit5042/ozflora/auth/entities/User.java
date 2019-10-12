@@ -26,7 +26,7 @@ import javax.persistence.Table;
 @DiscriminatorColumn(name = "USER_TYPE",
         discriminatorType = DiscriminatorType.STRING,
         length = 1)
-public class User implements Serializable {
+public abstract class User implements Serializable {
 
     @Id
     @Column(name = "email", nullable = false, length = 255)

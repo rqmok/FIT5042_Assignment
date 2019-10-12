@@ -21,6 +21,7 @@ public class UserGroup implements Serializable {
     
     public final static String USERS_GROUP = "users";
     public final static String WORKERS_GROUP = "workers";
+    public final static String ADMIN_GROUP = "admin";
 
     @Id
     @Column(name = "email", nullable = false, length = 255)

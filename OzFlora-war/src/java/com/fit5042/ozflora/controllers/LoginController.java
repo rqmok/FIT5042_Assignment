@@ -91,7 +91,11 @@ public class LoginController implements Serializable {
             logger.log(Level.SEVERE, e.getMessage());
         }
         
-        logger.log(Level.INFO, "Authenticated user {0}", principal.getName());
+        if (user != null) {
+            logger.log(Level.INFO, "Authenticated user {0}", user.getEmail());
+        } else {
+            return "index?faces-redirect=true";
+        }
         
         this.addUserToSessionMap();
         
