@@ -5,6 +5,8 @@
  */
 package com.fit5042.ozflora.mbeans;
 
+import com.fit5042.ozflora.auth.entities.User;
+import com.fit5042.ozflora.auth.entities.WebsiteUser;
 import com.fit5042.ozflora.controllers.LoginController;
 import com.fit5042.ozflora.repository.PlantRepository;
 import com.fit5042.ozflora.repository.UserRepository;
@@ -95,7 +97,17 @@ public class PlantManagedBean implements Serializable {
 
     public void savePlant(Plant plant) {
         try {
-            this.userRepository.savePlantToUser(this.loginController.getUser(), plant);
+            User user = this.loginController.getUser();
+            this.userRepository.savePlantToUser(user, plant);
+            
+            if (user instanceof WebsiteUser) {
+                WebsiteUser websiteUser = (WebsiteUser) user;
+                if (!websiteUser.getPlants().contains(plant)) {
+                    websiteUser.addPlant(plant);
+                }
+            }
+            
+            this.loginController.setUser(user);
         } catch (Exception e) {
             logger.log(Level.SEVERE, null, e);
         }
@@ -103,7 +115,17 @@ public class PlantManagedBean implements Serializable {
 
     public void unsavePlant(Plant plant) {
         try {
-            this.userRepository.removePlantFromUser(this.loginController.getUser(), plant);
+            User user = this.loginController.getUser();
+            this.userRepository.removePlantFromUser(user, plant);
+            
+            if (user instanceof WebsiteUser) {
+                WebsiteUser websiteUser = (WebsiteUser) user;
+                if (websiteUser.getPlants().contains(plant)) {
+                    websiteUser.removePlant(plant);
+                }
+            }
+            
+            this.loginController.setUser(user);
         } catch (Exception e) {
             logger.log(Level.SEVERE, null, e);
         }

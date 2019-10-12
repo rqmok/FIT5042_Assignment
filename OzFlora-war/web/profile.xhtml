@@ -22,11 +22,11 @@
             </div>
 
             <div class="cell">
-                <h:form id="profilePlantsForm">
+                <h:form id="profilePlantsForm" rendered="#{ loginController.userGroup.groupName == 'users' }">
                     <div class="grid-container fluid" style="margin-top: 20px;">
                         <div class="grid-x grid-margin-x">
 
-                            <ui:repeat id="featuredRepeat" value="#{ user.plants.toArray() }" var="plant" varStatus="status">
+                            <ui:repeat id="featuredRepeat" value="#{ loginController.user.plants.toArray() }" var="plant" varStatus="status">
                                 <div class="cell small-4" style="min-width: 300px; max-width: 300px;">
                                     <ui:include src="/WEB-INF/plantcard.xhtml" />
                                 </div>

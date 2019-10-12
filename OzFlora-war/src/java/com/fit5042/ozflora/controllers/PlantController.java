@@ -59,14 +59,12 @@ public class PlantController {
         this.plant = plant;
     }
 
-    public String savePlant() {
+    public void savePlant() {
         plantManagedBean.savePlant(plant);
-        return "detail?plantId=" + plant.getId() + "&faces-redirect=true";
     }
 
-    public String unsavePlant() {
+    public void unsavePlant() {
         plantManagedBean.unsavePlant(plant);
-        return "detail?plantId=" + plant.getId() + "&faces-redirect=true";
     }
 
 }

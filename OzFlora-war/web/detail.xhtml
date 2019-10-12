@@ -31,15 +31,17 @@
                 </div>
 
                 <div class="cell grid-x grid-padding-x">
-                    <h:form rendered="#{ user != null }">
+                    <h:form id="savePlantForm" rendered="#{ loginController.user != null and loginController.userGroup.groupName == 'users' }">
                         <h:commandButton class="button" value="Save" action="#{ plantController.savePlant }"
-                                         rendered="#{ not user.plants.contains(plantController.plant) }">
+                                         rendered="#{ not loginController.user.plants.contains(plantController.plant) }">
                             <f:param name="plantId" value="#{ plant.id }" />
+                            <f:ajax execute="@form" render="@form" />
                         </h:commandButton>
                         
                         <h:commandButton class="button" value="Saved" action="#{ plantController.unsavePlant }"
-                                         rendered="#{ user.plants.contains(plantController.plant) }">
+                                         rendered="#{ loginController.user.plants.contains(plantController.plant) }">
                             <f:param name="plantId" value="#{ plant.id }" />
+                            <f:ajax execute="@form" render="@form" />
                         </h:commandButton>
                     </h:form>
                 </div>

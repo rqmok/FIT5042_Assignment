@@ -39,6 +39,7 @@ public class LoginController implements Serializable {
     private String password;
     
     private User user;
+    private UserGroup userGroup;
 
     /**
      * Creates a new instance of LoginController
@@ -92,17 +93,7 @@ public class LoginController implements Serializable {
         
         logger.log(Level.INFO, "Authenticated user {0}", principal.getName());
         
-        ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
-        externalContext.getSessionMap().put("user", user);
-        
-        if (user != null) {
-            try {
-                UserGroup userGroup = this.userRepository.findUserGroupById(user.getEmail());
-                externalContext.getSessionMap().put("user_group", userGroup);
-            } catch (Exception e) {
-                logger.log(Level.SEVERE, e.getMessage());
-            }
-        }
+        this.addUserToSessionMap();
         
         return "index?faces-redirect=true";
     }
@@ -120,6 +111,36 @@ public class LoginController implements Serializable {
         }
         
         return "login?faces-redirect=true";
+    }
+    
+    public void addUserToSessionMap() {
+        ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
+        externalContext.getSessionMap().put("user", user);
+        
+        if (user != null) {
+            try {
+                userGroup = this.userRepository.findUserGroupById(user.getEmail());
+                externalContext.getSessionMap().put("user_group", userGroup);
+            } catch (Exception e) {
+                logger.log(Level.SEVERE, e.getMessage());
+            }
+        }
+    }
+
+    public UserRepository getUserRepository() {
+        return userRepository;
+    }
+
+    public void setUserRepository(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
+
+    public UserGroup getUserGroup() {
+        return userGroup;
+    }
+
+    public void setUserGroup(UserGroup userGroup) {
+        this.userGroup = userGroup;
     }
     
 }
