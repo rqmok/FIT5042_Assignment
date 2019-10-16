@@ -9,6 +9,7 @@ import com.fit5042.ozflora.repository.entities.Plant;
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
+import javax.persistence.CascadeType;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -25,7 +26,7 @@ import javax.persistence.PrimaryKeyJoinColumn;
 @PrimaryKeyJoinColumn(name = "email")
 public class WebsiteUser extends User implements Serializable {
     
-    @OneToMany(fetch = FetchType.EAGER)
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
     private Set<Plant> plants;
 
     public WebsiteUser() {

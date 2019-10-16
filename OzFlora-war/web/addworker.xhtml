@@ -1,0 +1,169 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>#{ titleController.title } - Add Worker</title>
+        <ui:include src="/WEB-INF/head.xhtml" />
+    </h:head>
+    <h:body>
+        <ui:include src="/WEB-INF/menu.xhtml" />
+
+        <h:form id="addWorkerForm">
+
+            <!-- Run the validation function after form is validated -->
+            <f:event type="postValidate" listener="#{ addUserController.validateForm }" />
+
+            <div class="grid-container">
+
+                <!-- Name -->
+                <div class="grid-x">
+                    <div class="small-2 cell">
+                        <h:outputLabel for="name">Name:</h:outputLabel>
+                    </div>
+
+                    <div class="small-6 cell">
+                        <h:inputText id="name" value="#{ addUserController.name }"
+                                     required="true" requiredMessage="Please enter the worker's name"
+                                     validatorMessage="Name should be no more than 255 characters">
+                            <f:validateLength maximum="255" />
+                        </h:inputText>
+                    </div>
+                </div>
+
+                <!-- Email -->
+                <div class="grid-x">
+                    <div class="small-2 cell">
+                        <h:outputLabel for="email">Email:</h:outputLabel>
+                    </div>
+                    <div class="small-6 cell">
+                        <h:inputText id="email" value="#{ addUserController.email }"
+                                     required="true" requiredMessage="Please enter the worker's email address" />
+                    </div>
+                </div>
+
+                <!-- Date of Birth -->
+                <div class="grid-x">
+                    <div class="small-2 cell">
+                        <h:outputLabel for="dob">Date Of Birth (dd-MM-yyyy):</h:outputLabel>
+                    </div>
+                    <div class="small-6 cell">
+                        <h:inputText id="dob" value="#{ addUserController.dob }"
+                                     required="true" requiredMessage="Please enter the worker's date of birth">
+                            <f:convertDateTime pattern="dd-MM-yyyy" />
+                        </h:inputText>
+                    </div>
+                </div>
+
+                <!-- Mobile -->
+                <div class="grid-x">
+                    <div class="small-2 cell">
+                        <h:outputLabel for="mobile">Mobile:</h:outputLabel>
+                    </div>
+                    <div class="small-6 cell">
+                        <h:inputText id="mobile" value="#{ addUserController.mobile }"
+                                     required="true" requiredMessage="Please enter the worker's mobile number"
+                                     validatorMessage="Mobile number must be 10 digits long">
+                            <f:validateLength maximum="10" minimum="10" />
+                        </h:inputText>
+                    </div>
+                </div>
+
+                <!-- Street Number -->
+                <div class="grid-x">
+                    <div class="small-2 cell">
+                        <h:outputLabel for="streetnumber">Street Number:</h:outputLabel>
+                    </div>
+                    <div class="small-6 cell">
+                        <h:inputText id="streetnumber" value="#{ addUserController.streetNumber }"
+                                     required="true" requiredMessage="Please enter the worker's street number" />
+                    </div>
+                </div>
+
+                <!-- Street Address -->
+                <div class="grid-x">
+                    <div class="small-2 cell">
+                        <h:outputLabel for="streetaddress">Street Address:</h:outputLabel>
+                    </div>
+                    <div class="small-6 cell">
+                        <h:inputText id="streetaddress" value="#{ addUserController.streetAddress }"
+                                     required="true" requiredMessage="Please enter the worker's street number" />
+                    </div>
+                </div>
+
+                <!-- Suburb -->
+                <div class="grid-x">
+                    <div class="small-2 cell">
+                        <h:outputLabel for="suburb">Suburb:</h:outputLabel>
+                    </div>
+                    <div class="small-6 cell">
+                        <h:inputText id="suburb" value="#{ addUserController.suburb }"
+                                     required="true" requiredMessage="Please enter the worker's suburb" />
+                    </div>
+                </div>
+
+                <!-- State -->
+                <div class="grid-x">
+                    <div class="small-2 cell">
+                        <h:outputLabel for="state">State:</h:outputLabel>
+                    </div>
+                    <div class="small-6 cell">
+                        <h:inputText id="state" value="#{ addUserController.state }"
+                                     required="true" requiredMessage="Please enter the worker's state" />
+                    </div>
+                </div>
+
+                <!-- Postcode -->
+                <div class="grid-x">
+                    <div class="small-2 cell">
+                        <h:outputLabel for="postcode">Postcode:</h:outputLabel>
+                    </div>
+                    <div class="small-6 cell">
+                        <h:inputText id="postcode" value="#{ addUserController.postcode }"
+                                     required="true" requiredMessage="Please enter the worker's postcode" />
+                    </div>
+                </div>
+
+                <!-- Password -->
+                <div class="grid-x">
+                    <div class="small-2 cell">
+                        <h:outputLabel for="password">Password: </h:outputLabel>
+                    </div>
+                    <div class="small-6 cell">
+                        <h:inputSecret id="password" value="#{ addUserController.password }"
+                                       required="true" requiredMessage="Please enter a password"
+                                       validatorMessage="Password must contains at least one lowercase character, uppercase character, and a digit with a length between 6 and 20 characters">
+                            <f:validateRegex pattern="((?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20})" />
+                        </h:inputSecret>
+                    </div>
+                </div>
+
+                <!-- Confirm Password -->
+                <div class="grid-x">
+                    <div class="small-2 cell">
+                        <h:outputLabel for="confirm_password">Confirm Password: </h:outputLabel>
+                    </div>
+                    <div class="small-6 cell">
+                        <h:inputSecret id="confirm_password" value="#{ addUserController.confirmPassword }"
+                                       required="true" requiredMessage="Please confirm the worker's password" />
+                    </div>
+                </div>
+
+                <div class="grid-x grid-padding-x">
+                    <div class="cell small-1">
+                        <h:commandButton class="success button" value="Save" action="#{ addUserController.registerWorkerUser }" />
+                    </div>
+
+                    <div class="cell small-1">
+                        <h:commandButton class="alert button" value="Cancel" action="#{ addUserController.cancel }" immediate="true" />
+                    </div>
+                </div>
+            </div>
+
+        </h:form>
+
+        <ui:include src="/WEB-INF/body.xhtml" />
+    </h:body>
+</html>

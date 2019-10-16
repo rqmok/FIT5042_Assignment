@@ -26,6 +26,22 @@ public interface UserRepository {
      * @throws java.lang.Exception
      */
     User createUser(User user) throws Exception;
+    
+    /**
+     * Remove a given {link User} from the database.
+     * 
+     * @param user The {@link User} to remove.
+     * @throws java.lang.Exception
+     */
+    void removeUser(User user) throws Exception;
+    
+    /**
+     * Save a given {@link User} to the database.
+     * 
+     * @param user The {@link User} to save.
+     * @throws java.lang.Exception
+     */
+    void saveUser(User user) throws Exception;
 
     /**
      * Find a {@link User} given their ID.

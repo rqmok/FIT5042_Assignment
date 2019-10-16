@@ -33,10 +33,7 @@
                     </div>
                     <div class="small-6 cell">
                         <h:inputSecret id="password" value="#{ loginController.password }"
-                                       required="true" requiredMessage="Please enter a password"
-                                       validatorMessage="Password must contains at least one lowercase character, uppercase character, and a digit with a length between 6 and 20 characters">
-                            <f:validateRegex pattern="((?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20})" />
-                        </h:inputSecret>
+                                       required="true" requiredMessage="Please enter a password" />
                     </div>
                 </div>
                 

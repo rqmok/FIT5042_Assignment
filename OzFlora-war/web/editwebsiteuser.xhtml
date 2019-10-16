@@ -5,16 +5,16 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-        <title>#{ titleController.title } - Register</title>
+        <title>#{ titleController.title }</title>
         <ui:include src="/WEB-INF/head.xhtml" />
     </h:head>
     <h:body>
         <ui:include src="/WEB-INF/menu.xhtml" />
 
-        <h:form id="registerForm">
+        <h:form id="editUserForm">
 
             <!-- Run the validation function after form is validated -->
-            <f:event type="postValidate" listener="#{ addUserController.validateForm }" />
+            <f:event type="postValidate" listener="#{ editUserController.validateForm }" />
 
             <div class="grid-container">
 
@@ -24,19 +24,8 @@
                         <h:outputLabel for="name">Name: </h:outputLabel>
                     </div>
                     <div class="small-6 cell">
-                        <h:inputText id="name" value="#{ addUserController.name }"
+                        <h:inputText id="name" value="#{ editUserController.user.name }"
                                      required="true" requiredMessage="Please enter your name" maxlength="30" />
-                    </div>
-                </div>
-
-                <!-- Email -->
-                <div class="grid-x">
-                    <div class="small-2 cell">
-                        <h:outputLabel for="email">Email: </h:outputLabel>
-                    </div>
-                    <div class="small-6 cell">
-                        <h:inputText id="email" value="#{ addUserController.email }"
-                                     required="true" requiredMessage="Please enter your email address"></h:inputText>
                     </div>
                 </div>
 
@@ -46,10 +35,9 @@
                         <h:outputLabel for="password">Password: </h:outputLabel>
                     </div>
                     <div class="small-6 cell">
-                        <h:inputSecret id="password" value="#{ addUserController.password }"
-                                       required="true" requiredMessage="Please enter a password"
+                        <h:inputSecret id="password" value="#{ editUserController.password }"
                                        validatorMessage="Password must contains at least one lowercase character, uppercase character, and a digit with a length between 6 and 20 characters">
-                            <f:validateRegex pattern="((?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20})" />
+                            <f:validateRegex pattern="((?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20})?" />
                         </h:inputSecret>
                     </div>
                 </div>
@@ -60,17 +48,16 @@
                         <h:outputLabel for="confirm_password">Confirm Password: </h:outputLabel>
                     </div>
                     <div class="small-6 cell">
-                        <h:inputSecret id="confirm_password" value="#{ addUserController.confirmPassword }"
-                                       required="true" requiredMessage="Please confirm your password" />
+                        <h:inputSecret id="confirm_password" value="#{ editUserController.confirmPassword }" />
                     </div>
                 </div>
 
                 <div class="grid-x grid-padding-x">
                     <div class="cell small-1">
-                        <h:commandButton value="Register" class="button float-right" action="#{ addUserController.registerWebsiteUser }" />
+                        <h:commandButton value="Save" class="button float-right" action="#{ editUserController.saveUser }" />
                     </div>
                     <div class="cell small-1">
-                        <h:commandButton class="alert button" value="Cancel" action="#{ addUserController.cancel }" immediate="true" />
+                        <h:commandButton class="alert button" value="Cancel" action="#{ editUserController.cancel }" immediate="true" />
                     </div>
                 </div>
 

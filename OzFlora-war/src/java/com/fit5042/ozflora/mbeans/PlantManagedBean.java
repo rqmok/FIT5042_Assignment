@@ -28,7 +28,7 @@ import javax.faces.bean.SessionScoped;
 @SessionScoped
 public class PlantManagedBean implements Serializable {
 
-    private static final Logger logger = Logger.getLogger(LoginController.class.getName());
+    private static final Logger logger = Logger.getLogger(PlantManagedBean.class.getName());
 
     @EJB
     private PlantRepository plantRepository;

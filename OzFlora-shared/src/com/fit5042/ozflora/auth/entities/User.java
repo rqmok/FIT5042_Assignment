@@ -5,7 +5,6 @@
  */
 package com.fit5042.ozflora.auth.entities;
 
-import com.fit5042.ozflora.repository.entities.Plant;
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;

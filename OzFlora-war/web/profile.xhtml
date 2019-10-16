@@ -16,6 +16,28 @@
                 <h1>#{ user.name }</h1>
                 <h5>#{ user.email }</h5>
             </div>
+            
+            <h:panelGroup layout="block" styleClass="cell"
+                          rendered="#{ user_group.groupName == 'workers' }">
+                <h5>Mobile</h5>
+                <h6>#{ user.mobile }</h6>
+                
+                <h5>Date of Birth</h5>
+                <h6>
+                    <h:outputText value="#{ user.dob }">
+                        <f:convertDateTime pattern="dd-MM-yyyy" />
+                    </h:outputText>
+                </h6>
+                
+                <h5>Address</h5>
+                <h6>
+                    #{ user.address.streetNumber }
+                    #{ user.address.streetAddress },<br />
+                    #{ user.address.suburb },<br />
+                    #{ user.address.state }
+                    #{ user.address.postcode }
+                </h6>
+            </h:panelGroup>
 
             <div class="cell">
                 <h:form id="profilePlantsForm" rendered="#{ loginController.userGroup.groupName == 'users' }">

@@ -6,6 +6,7 @@
 package com.fit5042.ozflora.repository;
 
 import com.fit5042.ozflora.auth.AuthenticationUtils;
+import com.fit5042.ozflora.auth.entities.AdminUser;
 import com.fit5042.ozflora.auth.entities.User;
 import com.fit5042.ozflora.auth.entities.UserGroup;
 import com.fit5042.ozflora.auth.entities.WebsiteUser;
@@ -45,6 +46,8 @@ public class UserRepositoryImpl implements UserRepository {
         
         if (user instanceof WorkerUser) {
             userGroup.setGroupName(UserGroup.WORKERS_GROUP);
+        } else if (user instanceof AdminUser) {
+            userGroup.setGroupName(UserGroup.ADMIN_GROUP);
         } else {
             userGroup.setGroupName(UserGroup.USERS_GROUP);
         }
@@ -53,6 +56,20 @@ public class UserRepositoryImpl implements UserRepository {
         entityManager.persist(userGroup);
         
         return user;
+    }
+
+    @Override
+    public void removeUser(User user) throws Exception {        
+        entityManager.remove(this.findUserGroupById(user.getEmail()));
+        if (!entityManager.contains(user)) {
+            user = entityManager.merge(user);
+        }
+        entityManager.remove(user);
+    }
+
+    @Override
+    public void saveUser(User user) throws Exception {
+        entityManager.merge(user);
     }
     
     @Override

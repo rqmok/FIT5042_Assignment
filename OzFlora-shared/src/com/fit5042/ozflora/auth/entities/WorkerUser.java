@@ -7,6 +7,7 @@ package com.fit5042.ozflora.auth.entities;
 
 import java.io.Serializable;
 import java.util.Date;
+import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
@@ -24,7 +25,8 @@ import javax.persistence.TemporalType;
 @PrimaryKeyJoinColumn(name = "email")
 public class WorkerUser extends User implements Serializable {
     
-    private int mobile;
+    @Column(name = "mobile", nullable = false, length = 10)
+    private String mobile;
     
     @Temporal(TemporalType.DATE)
     private Date dob;
@@ -36,18 +38,18 @@ public class WorkerUser extends User implements Serializable {
         super();
     }
 
-    public WorkerUser(int mobile, Date dob, Address address, String email, String name, String password) {
+    public WorkerUser(String mobile, Date dob, Address address, String email, String name, String password) {
         super(email, name, password);
         this.mobile = mobile;
         this.dob = dob;
         this.address = address;
     }
 
-    public int getMobile() {
+    public String getMobile() {
         return mobile;
     }
 
-    public void setMobile(int mobile) {
+    public void setMobile(String mobile) {
         this.mobile = mobile;
     }
 

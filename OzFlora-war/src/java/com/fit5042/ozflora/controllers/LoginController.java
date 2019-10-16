@@ -29,15 +29,15 @@ import javax.servlet.http.HttpSession;
 @ManagedBean(name = "loginController")
 @SessionScoped
 public class LoginController implements Serializable {
-    
+
     private static final Logger logger = Logger.getLogger(LoginController.class.getName());
-    
+
     @EJB
     private UserRepository userRepository;
-    
+
     private String email;
     private String password;
-    
+
     private User user;
     private UserGroup userGroup;
 
@@ -62,19 +62,19 @@ public class LoginController implements Serializable {
     public void setPassword(String password) {
         this.password = password;
     }
-    
+
     public User getUser() {
         return user;
     }
-    
+
     public void setUser(User user) {
         this.user = user;
     }
-    
+
     public String login() {
         FacesContext context = FacesContext.getCurrentInstance();
         HttpServletRequest request = (HttpServletRequest) context.getExternalContext().getRequest();
-        
+
         try {
             request.login(email, password);
         } catch (ServletException e) {
@@ -82,53 +82,39 @@ public class LoginController implements Serializable {
             context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Login failed", null));
             return "login";
         }
-        
+
         Principal principal = request.getUserPrincipal();
-        
+
         try {
-            setUser(this.userRepository.findUserById(principal.getName()));
+            this.setUser(this.userRepository.findUserById(principal.getName()));
+            this.setUserGroup(this.userRepository.findUserGroupById(user.getEmail()));
+
+            logger.log(Level.INFO, "Authenticated user {0}", user.getEmail());
+
+            ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
+            externalContext.getSessionMap().put("user", user);
+            externalContext.getSessionMap().put("user_group", userGroup);
         } catch (Exception e) {
             logger.log(Level.SEVERE, e.getMessage());
         }
-        
-        if (user != null) {
-            logger.log(Level.INFO, "Authenticated user {0}", user.getEmail());
-        } else {
-            return "index?faces-redirect=true";
-        }
-        
-        this.addUserToSessionMap();
-        
+
         return "index?faces-redirect=true";
     }
-    
+
     public String logout() {
         FacesContext context = FacesContext.getCurrentInstance();
         HttpServletRequest request = (HttpServletRequest) context.getExternalContext().getRequest();
-        
+
         try {
             request.logout();
             ((HttpSession) context.getExternalContext().getSession(false)).invalidate();
             this.user = null;
+            this.userGroup = null;
         } catch (ServletException e) {
             logger.log(Level.SEVERE, e.getMessage());
         }
-        
+
         return "login?faces-redirect=true";
-    }
-    
-    public void addUserToSessionMap() {
-        ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
-        externalContext.getSessionMap().put("user", user);
-        
-        if (user != null) {
-            try {
-                userGroup = this.userRepository.findUserGroupById(user.getEmail());
-                externalContext.getSessionMap().put("user_group", userGroup);
-            } catch (Exception e) {
-                logger.log(Level.SEVERE, e.getMessage());
-            }
-        }
     }
 
     public UserRepository getUserRepository() {
@@ -146,5 +132,5 @@ public class LoginController implements Serializable {
     public void setUserGroup(UserGroup userGroup) {
         this.userGroup = userGroup;
     }
-    
+
 }

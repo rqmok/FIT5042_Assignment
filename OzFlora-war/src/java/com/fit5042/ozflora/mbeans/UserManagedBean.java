@@ -25,7 +25,7 @@ import javax.faces.bean.ManagedBean;
 @SessionScoped
 public class UserManagedBean implements Serializable {
     
-    private static final Logger logger = Logger.getLogger(LoginController.class.getName());
+    private static final Logger logger = Logger.getLogger(UserManagedBean.class.getName());
     
     @EJB
     private UserRepository userRepository;
@@ -42,6 +42,30 @@ public class UserManagedBean implements Serializable {
 
     public void setUserRepository(UserRepository userRepository) {
         this.userRepository = userRepository;
+    }
+    
+    public void createUser(User user) {
+        try {
+            this.userRepository.createUser(user);
+        } catch (Exception e) {
+            logger.log(Level.SEVERE, null, e);
+        }
+    }
+    
+    public void removeUser(User user) {
+        try {
+            this.userRepository.removeUser(user);
+        } catch (Exception e) {
+            logger.log(Level.SEVERE, null, e);
+        }
+    }
+    
+    public void saveUser(User user) {
+        try {
+            this.userRepository.saveUser(user);
+        } catch (Exception e) {
+            logger.log(Level.SEVERE, null, e);
+        }
     }
     
     public List<User> getAllUsers() {

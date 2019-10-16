@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>#{ titleController.title } - User Details</title>
+        <ui:include src="/WEB-INF/head.xhtml" />
+    </h:head>
+    <h:body>
+        <ui:include src="/WEB-INF/menu.xhtml" />
+
+        <h:panelGroup layout="block" styleClass="grid-x grid-padding-x grid-padding-y small-offset-1">
+            <h:panelGroup layout="block" styleClass="cell">
+                <h1>#{ userDetailsController.user.name }</h1>
+                <h5>#{ userDetailsController.user.email }</h5>
+            </h:panelGroup>
+
+            <h:panelGroup layout="block" styleClass="cell"
+                          rendered="#{ userDetailsController.userGroup.groupName == 'workers' }">
+                <h5>Mobile</h5>
+                <h6>#{ userDetailsController.user.mobile }</h6>
+                
+                <h5>Date of Birth</h5>
+                <h6>
+                    <h:outputText value="#{ userDetailsController.user.dob }">
+                        <f:convertDateTime pattern="dd-MM-yyyy" />
+                    </h:outputText>
+                </h6>
+                
+                <h5>Address</h5>
+                <h6>
+                    #{ userDetailsController.user.address.streetNumber }
+                    #{ userDetailsController.user.address.streetAddress },<br />
+                    #{ userDetailsController.user.address.suburb },<br />
+                    #{ userDetailsController.user.address.state }
+                    #{ userDetailsController.user.address.postcode }
+                </h6>
+            </h:panelGroup>
+
+        </h:panelGroup>
+
+        <ui:include src="/WEB-INF/body.xhtml" />
+    </h:body>
+</html>

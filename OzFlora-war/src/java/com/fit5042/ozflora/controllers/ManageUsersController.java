@@ -7,6 +7,7 @@ package com.fit5042.ozflora.controllers;
 
 import com.fit5042.ozflora.auth.entities.User;
 import com.fit5042.ozflora.auth.entities.UserGroup;
+import com.fit5042.ozflora.auth.entities.WorkerUser;
 import com.fit5042.ozflora.mbeans.UserManagedBean;
 import java.util.List;
 import javax.el.ELContext;
@@ -49,6 +50,26 @@ public class ManageUsersController {
 
     public void setUsers(List<User> users) {
         this.users = users;
+    }
+    
+    public void removeUser(User user) {
+        this.userManagedBean.removeUser(user);
+        this.setUsers(this.userManagedBean.getAllUsers());
+    }
+    
+    public String editUser(User user) {
+        if (user instanceof WorkerUser) {
+            return "editworker?faces-redirect=true";
+        }
+        return "editwebsiteuser?faces-redirect=true";
+    }
+
+    public UserManagedBean getUserManagedBean() {
+        return userManagedBean;
+    }
+
+    public void setUserManagedBean(UserManagedBean userManagedBean) {
+        this.userManagedBean = userManagedBean;
     }
     
 }
