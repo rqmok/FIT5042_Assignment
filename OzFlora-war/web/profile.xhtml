@@ -11,11 +11,11 @@
     <h:body>
         <ui:include src="/WEB-INF/menu.xhtml" />
 
-        <div class="grid-y grid-padding-x grid-padding-y small-offset-1">
-            <div class="cell">
+        <h:panelGroup layout="block" styleClass="grid-y grid-padding-x grid-padding-y small-offset-1">
+            <h:panelGroup layout="block" styleClass="cell">
                 <h1>#{ user.name }</h1>
                 <h5>#{ user.email }</h5>
-            </div>
+            </h:panelGroup>
             
             <h:panelGroup layout="block" styleClass="cell"
                           rendered="#{ user_group.groupName == 'workers' }">
@@ -39,23 +39,23 @@
                 </h6>
             </h:panelGroup>
 
-            <div class="cell">
+            <h:panelGroup layout="block" styleClass="cell">
                 <h:form id="profilePlantsForm" rendered="#{ loginController.userGroup.groupName == 'users' }">
                     <h3>Saved Plants</h3>
-                    <div class="grid-container fluid" style="margin-top: 20px;">
-                        <div class="grid-x grid-margin-x">
+                    <h:panelGroup layout="block" styleClass="grid-container fluid" style="margin-top: 20px;">
+                        <h:panelGroup layout="block" styleClass="grid-x grid-margin-x">
 
                             <ui:repeat id="featuredRepeat" value="#{ loginController.user.plants.toArray() }" var="plant" varStatus="status">
-                                <div class="cell small-4" style="min-width: 300px; max-width: 300px;">
+                                <h:panelGroup layout="block" styleClass="cell small-4" style="min-width: 300px; max-width: 300px;">
                                     <ui:include src="/WEB-INF/plantcard.xhtml" />
-                                </div>
+                                </h:panelGroup>
                             </ui:repeat>
 
-                        </div>
-                    </div>
+                        </h:panelGroup>
+                    </h:panelGroup>
                 </h:form>
-            </div>
-        </div>
+            </h:panelGroup>
+        </h:panelGroup>
 
         <ui:include src="/WEB-INF/body.xhtml" />
     </h:body>

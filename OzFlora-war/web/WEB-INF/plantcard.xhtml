@@ -9,16 +9,16 @@
 
     <h:commandLink action="detail.xhtml">
         <f:param name="plantId" value="#{ plant.id }" />
-        <div class="card" style="min-height: 520px;">
+        <h:panelGroup layout="block" styleClass="card" style="min-height: 520px;">
             <img src="#{ plant.imageUrl }" style="max-height: 200px;" />
-            <div class="card-divider">
+            <h:panelGroup layout="block" styleClass="card-divider">
                                         #{ plant.family }
-            </div>
-            <div class="card-section">
+            </h:panelGroup>
+            <h:panelGroup layout="block" styleClass="card-section">
                 <h4>#{ plant.name }</h4>
                 <p>#{ plant.description }</p>
-            </div>
-        </div>
+            </h:panelGroup>
+        </h:panelGroup>
     </h:commandLink>
 
 </ui:composition>

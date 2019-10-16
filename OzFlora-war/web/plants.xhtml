@@ -13,41 +13,41 @@
         <ui:include src="/WEB-INF/menu.xhtml" />
 
         <h:form id="plantsSearchForm">
-            <div class="grid-container fluid" style="margin-top: 20px;">
-                <div class="grid-x grid-margin-x">
-                    <div class="cell auto">
+            <h:panelGroup layout="block" styleClass="grid-container fluid" style="margin-top: 20px;">
+                <h:panelGroup layout="block" styleClass="grid-x grid-margin-x">
+                    <h:panelGroup layout="block" styleClass="cell auto">
                         <h:inputText id="nameSearchField" value="#{ plantsController.plantName }" a:placeholder="Name" />
-                    </div>
+                    </h:panelGroup>
 
-                    <div class="cell auto">
+                    <h:panelGroup layout="block" styleClass="cell auto">
                         <h:inputText id="descriptionSearchField" value="#{ plantsController.plantDescription }" a:placeholder="Description" />
-                    </div>
+                    </h:panelGroup>
 
-                    <div class="cell auto">
+                    <h:panelGroup layout="block" styleClass="cell auto">
                         <h:inputText id="familySearchField" value="#{ plantsController.plantFamily }" a:placeholder="Family" />
-                    </div>
+                    </h:panelGroup>
 
-                    <div class="cell small-1">
-                        <h:commandButton class="button" value="Search" action="#{ plantsController.searchPlants }">
+                    <h:panelGroup layout="block" styleClass="cell small-1">
+                        <h:commandButton styleClass="button" value="Search" action="#{ plantsController.searchPlants }">
                             <f:ajax execute="@form" render="plantsForm" />
                         </h:commandButton>
-                    </div>
-                </div>
-            </div>
+                    </h:panelGroup>
+                </h:panelGroup>
+            </h:panelGroup>
         </h:form>
 
         <h:form id="plantsForm">
-            <div class="grid-container fluid" style="margin-top: 20px;">
-                <div class="grid-x grid-margin-x">
+            <h:panelGroup layout="block" styleClass="grid-container fluid" style="margin-top: 20px;">
+                <h:panelGroup layout="block" styleClass="grid-x grid-margin-x">
 
                     <ui:repeat id="featuredRepeat" value="#{ plantsController.plants }" var="plant" varStatus="status">
-                        <div class="cell small-4" style="min-width: 300px; max-width: 300px;">
+                        <h:panelGroup layout="block" styleClass="cell small-4" style="min-width: 300px; max-width: 300px;">
                             <ui:include src="/WEB-INF/plantcard.xhtml" />
-                        </div>
+                        </h:panelGroup>
                     </ui:repeat>
 
-                </div>
-            </div>
+                </h:panelGroup>
+            </h:panelGroup>
         </h:form>
 
         <ui:include src="/WEB-INF/body.xhtml" />

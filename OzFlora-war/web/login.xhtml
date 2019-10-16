@@ -13,41 +13,41 @@
 
         <h:form id="loginForm">
 
-            <div class="grid-container">
+            <h:panelGroup layout="block" styleClass="grid-container">
 
                 <!-- Email -->
-                <div class="grid-x grid-padding-x">
-                    <div class="small-1 cell">
+                <h:panelGroup layout="block" styleClass="grid-x grid-padding-x">
+                    <h:panelGroup layout="block" styleClass="small-1 cell">
                         <h:outputLabel for="email">Email: </h:outputLabel>
-                    </div>
-                    <div class="small-6 cell">
+                    </h:panelGroup>
+                    <h:panelGroup layout="block" styleClass="small-6 cell">
                         <h:inputText id="email" value="#{ loginController.email }"
                                      required="true" requiredMessage="Please enter your email address"></h:inputText>
-                    </div>
-                </div>
+                    </h:panelGroup>
+                </h:panelGroup>
 
                 <!-- Password -->
-                <div class="grid-x grid-padding-x">
-                    <div class="small-1 cell">
+                <h:panelGroup layout="block" styleClass="grid-x grid-padding-x">
+                    <h:panelGroup layout="block" styleClass="small-1 cell">
                         <h:outputLabel for="password">Password: </h:outputLabel>
-                    </div>
-                    <div class="small-6 cell">
+                    </h:panelGroup>
+                    <h:panelGroup layout="block" styleClass="small-6 cell">
                         <h:inputSecret id="password" value="#{ loginController.password }"
                                        required="true" requiredMessage="Please enter a password" />
-                    </div>
-                </div>
+                    </h:panelGroup>
+                </h:panelGroup>
                 
-                <div class="grid-x grid-padding-x">
-                    <div class="small-1 cell">
-                        <h:commandButton value="Login" class="button" action="#{ loginController.login }" />
-                    </div>
+                <h:panelGroup layout="block" styleClass="grid-x grid-padding-x">
+                    <h:panelGroup layout="block" styleClass="small-1 cell">
+                        <h:commandButton value="Login" styleClass="button" action="#{ loginController.login }" />
+                    </h:panelGroup>
                     
-                    <div class="small-1 cell">
-                        <h:button value="Register" class="button" outcome="register.xhtml" />
-                    </div>
-                </div>
+                    <h:panelGroup layout="block" styleClass="small-1 cell">
+                        <h:button value="Register" styleClass="button" outcome="register.xhtml" />
+                    </h:panelGroup>
+                </h:panelGroup>
                 
-            </div>
+            </h:panelGroup>
             
         </h:form>
 

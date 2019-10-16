@@ -13,14 +13,14 @@
         <ui:include src="/WEB-INF/menu.xhtml" />
 
         <!-- Add User -->
-        <div class="grid-x grid-padding-x">
-            <div class="cell small-1">
+        <h:panelGroup layout="block" styleClass="grid-x grid-padding-x">
+            <h:panelGroup layout="block" styleClass="cell small-1">
                 <h:button value="Add User" outcome="register.xhtml" styleClass="button" />
-            </div>
-            <div class="cell small-1">
+            </h:panelGroup>
+            <h:panelGroup layout="block" styleClass="cell small-1">
                 <h:button value="Add Worker" outcome="addworker.xhtml" styleClass="button" />
-            </div>
-        </div>
+            </h:panelGroup>
+        </h:panelGroup>
 
         <!-- Users Table -->
         <h:dataTable id="usersTable"
@@ -55,10 +55,10 @@
             
             <h:column>
                 <h:form id="editUserLinkForm" rendered="#{ groupName != 'admin' }">
-                    <h:commandButton class="button" value="Edit" action="editworker.xhtml" rendered="#{ groupName == 'workers' }">
+                    <h:commandButton styleClass="button" value="Edit" action="editworker.xhtml" rendered="#{ groupName == 'workers' }">
                         <f:param name="userId" value="#{ user.email }" />
                     </h:commandButton>
-                    <h:commandButton class="button" value="Edit" action="editwebsiteuser.xhtml" rendered="#{ groupName == 'users' }">
+                    <h:commandButton styleClass="button" value="Edit" action="editwebsiteuser.xhtml" rendered="#{ groupName == 'users' }">
                         <f:param name="userId" value="#{ user.email }" />
                     </h:commandButton>
                 </h:form>
@@ -66,7 +66,7 @@
             
             <h:column>
                 <h:form id="deleteuserLinkForm" rendered="#{ groupName != 'admin' }">
-                    <h:commandButton class="alert button" value="Delete" action="#{ manageUsersController.removeUser(user) }">
+                    <h:commandButton styleClass="alert button" value="Delete" action="#{ manageUsersController.removeUser(user) }">
                         <f:ajax execute="@form" render="usersTable" />
                     </h:commandButton>
                 </h:form>

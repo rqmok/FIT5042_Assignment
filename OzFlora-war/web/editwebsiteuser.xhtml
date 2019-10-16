@@ -16,52 +16,52 @@
             <!-- Run the validation function after form is validated -->
             <f:event type="postValidate" listener="#{ editUserController.validateForm }" />
 
-            <div class="grid-container">
+            <h:panelGroup layout="block" styleClass="grid-container">
 
                 <!-- Name -->
-                <div class="grid-x">
-                    <div class="small-2 cell">
+                <h:panelGroup layout="block" styleClass="grid-x">
+                    <h:panelGroup layout="block" styleClass="small-2 cell">
                         <h:outputLabel for="name">Name: </h:outputLabel>
-                    </div>
-                    <div class="small-6 cell">
+                    </h:panelGroup>
+                    <h:panelGroup layout="block" styleClass="small-6 cell">
                         <h:inputText id="name" value="#{ editUserController.user.name }"
                                      required="true" requiredMessage="Please enter your name" maxlength="30" />
-                    </div>
-                </div>
+                    </h:panelGroup>
+                </h:panelGroup>
 
                 <!-- Password -->
-                <div class="grid-x">
-                    <div class="small-2 cell">
+                <h:panelGroup layout="block" styleClass="grid-x">
+                    <h:panelGroup layout="block" styleClass="small-2 cell">
                         <h:outputLabel for="password">Password: </h:outputLabel>
-                    </div>
-                    <div class="small-6 cell">
+                    </h:panelGroup>
+                    <h:panelGroup layout="block" styleClass="small-6 cell">
                         <h:inputSecret id="password" value="#{ editUserController.password }"
                                        validatorMessage="Password must contains at least one lowercase character, uppercase character, and a digit with a length between 6 and 20 characters">
                             <f:validateRegex pattern="((?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20})?" />
                         </h:inputSecret>
-                    </div>
-                </div>
+                    </h:panelGroup>
+                </h:panelGroup>
 
                 <!-- Confirm Password -->
-                <div class="grid-x">
-                    <div class="small-2 cell">
+                <h:panelGroup layout="block" styleClass="grid-x">
+                    <h:panelGroup layout="block" styleClass="small-2 cell">
                         <h:outputLabel for="confirm_password">Confirm Password: </h:outputLabel>
-                    </div>
-                    <div class="small-6 cell">
+                    </h:panelGroup>
+                    <h:panelGroup layout="block" styleClass="small-6 cell">
                         <h:inputSecret id="confirm_password" value="#{ editUserController.confirmPassword }" />
-                    </div>
-                </div>
+                    </h:panelGroup>
+                </h:panelGroup>
 
-                <div class="grid-x grid-padding-x">
-                    <div class="cell small-1">
-                        <h:commandButton value="Save" class="button float-right" action="#{ editUserController.saveUser }" />
-                    </div>
-                    <div class="cell small-1">
-                        <h:commandButton class="alert button" value="Cancel" action="#{ editUserController.cancel }" immediate="true" />
-                    </div>
-                </div>
+                <h:panelGroup layout="block" styleClass="grid-x grid-padding-x">
+                    <h:panelGroup layout="block" styleClass="cell small-1">
+                        <h:commandButton value="Save" styleClass="button float-right" action="#{ editUserController.saveUser }" />
+                    </h:panelGroup>
+                    <h:panelGroup layout="block" styleClass="cell small-1">
+                        <h:commandButton styleClass="alert button" value="Cancel" action="#{ editUserController.cancel }" immediate="true" />
+                    </h:panelGroup>
+                </h:panelGroup>
 
-            </div>
+            </h:panelGroup>
 
         </h:form>
 

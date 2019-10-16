@@ -13,78 +13,78 @@
 
         <h:form id="editPlantForm">
             
-            <div class="grid-container">
+            <h:panelGroup layout="block" styleClass="grid-container">
                 
                 <!-- Name -->
-                <div class="grid-x grid-padding-x">
-                    <div class="small-1 cell">
+                <h:panelGroup layout="block" styleClass="grid-x grid-padding-x">
+                    <h:panelGroup layout="block" styleClass="small-1 cell">
                         <h:outputLabel for="name">Name:</h:outputLabel>
-                    </div>
+                    </h:panelGroup>
                     
-                    <div class="small-6 cell">
+                    <h:panelGroup layout="block" styleClass="small-6 cell">
                         <h:inputText id="name" value="#{ editPlantController.plant.name }"
                                      required="true" requiredMessage="Please enter the plant's name"
                                      validatorMessage="Name should be no more than 255 characters">
                             <f:validateLength maximum="255" />
                         </h:inputText>
-                    </div>
-                </div>
+                    </h:panelGroup>
+                </h:panelGroup>
                 
                 <!-- Family -->
-                <div class="grid-x grid-padding-x">
-                    <div class="small-1 cell">
+                <h:panelGroup layout="block" styleClass="grid-x grid-padding-x">
+                    <h:panelGroup layout="block" styleClass="small-1 cell">
                         <h:outputLabel for="family">Family:</h:outputLabel>
-                    </div>
+                    </h:panelGroup>
                     
-                    <div class="small-6 cell">
+                    <h:panelGroup layout="block" styleClass="small-6 cell">
                         <h:inputText id="family" value="#{ editPlantController.plant.family }"
                                      required="true" requiredMessage="Please enter the plant's family"
                                      validatorMessage="Family should be no more than 255 characters">
                             <f:validateLength maximum="255" />
                         </h:inputText>
-                    </div>
-                </div>
+                    </h:panelGroup>
+                </h:panelGroup>
                 
                 <!-- Image URL -->
-                <div class="grid-x grid-padding-x">
-                    <div class="small-1 cell">
+                <h:panelGroup layout="block" styleClass="grid-x grid-padding-x">
+                    <h:panelGroup layout="block" styleClass="small-1 cell">
                         <h:outputLabel for="image">Image URL:</h:outputLabel>
-                    </div>
+                    </h:panelGroup>
                     
-                    <div class="small-6 cell">
+                    <h:panelGroup layout="block" styleClass="small-6 cell">
                         <h:inputText id="image" value="#{ editPlantController.plant.imageUrl }"
                                      required="true" requiredMessage="Please enter the plant's image URL"
                                      validatorMessage="Image URL should be no more than 255 characters">
                             <f:validateLength maximum="255" />
                         </h:inputText>
-                    </div>
-                </div>
+                    </h:panelGroup>
+                </h:panelGroup>
                 
                 <!-- Description -->
-                <div class="grid-x grid-padding-x">
-                    <div class="small-1 cell">
+                <h:panelGroup layout="block" styleClass="grid-x grid-padding-x">
+                    <h:panelGroup layout="block" styleClass="small-1 cell">
                         <h:outputLabel for="description">Description:</h:outputLabel>
-                    </div>
+                    </h:panelGroup>
                     
-                    <div class="small-6 cell">
+                    <h:panelGroup layout="block" styleClass="small-6 cell">
                         <h:inputTextarea id="description" value="#{ editPlantController.plant.description }"
                                      required="true" requiredMessage="Please enter the plant's description"
                                      validatorMessage="Description should be no more than 255 characters"
                                      rows="3">
                             <f:validateLength maximum="255" />
                         </h:inputTextarea>
-                    </div>
-                </div>
+                    </h:panelGroup>
+                </h:panelGroup>
                 
-                <div class="grid-x grid-margin-x right">
-                    <div class="cell small-1">
-                        <h:commandButton class="success button" value="Save" action="#{ editPlantController.savePlant }" />
-                    </div>
-                    <div class="cell small-1">
-                        <h:commandButton class="alert button" value="Cancel" action="#{ editPlantController.cancelEdit }" />
-                    </div>
-                </div>
-            </div>
+                <h:panelGroup layout="block" styleClass="grid-x grid-margin-x right">
+                    <h:panelGroup layout="block" styleClass="cell small-1">
+                        <h:commandButton styleClass="success button" value="Save" action="#{ editPlantController.savePlant }" />
+                    </h:panelGroup>
+                    <h:panelGroup layout="block" styleClass="cell small-1">
+                        <h:commandButton styleClass="alert button" value="Cancel" action="#{ editPlantController.cancelEdit }" />
+                    </h:panelGroup>
+                </h:panelGroup>
+            </h:panelGroup>
             
         </h:form>
 

@@ -16,138 +16,138 @@
             <!-- Run the validation function after form is validated -->
             <f:event type="postValidate" listener="#{ editUserController.validateForm }" />
 
-            <div class="grid-container">
+            <h:panelGroup layout="block" styleClass="grid-container">
 
                 <!-- Name -->
-                <div class="grid-x">
-                    <div class="small-2 cell">
+                <h:panelGroup layout="block" styleClass="grid-x">
+                    <h:panelGroup layout="block" styleClass="small-2 cell">
                         <h:outputLabel for="name">Name:</h:outputLabel>
-                    </div>
+                    </h:panelGroup>
 
-                    <div class="small-6 cell">
+                    <h:panelGroup layout="block" styleClass="small-6 cell">
                         <h:inputText id="name" value="#{ editUserController.user.name }"
                                      required="true" requiredMessage="Please enter the worker's name"
                                      validatorMessage="Name should be no more than 255 characters">
                             <f:validateLength maximum="255" />
                         </h:inputText>
-                    </div>
-                </div>
+                    </h:panelGroup>
+                </h:panelGroup>
 
                 <!-- Date of Birth -->
-                <div class="grid-x">
-                    <div class="small-2 cell">
+                <h:panelGroup layout="block" styleClass="grid-x">
+                    <h:panelGroup layout="block" styleClass="small-2 cell">
                         <h:outputLabel for="dob">Date Of Birth (dd-MM-yyyy):</h:outputLabel>
-                    </div>
-                    <div class="small-6 cell">
+                    </h:panelGroup>
+                    <h:panelGroup layout="block" styleClass="small-6 cell">
                         <h:inputText id="dob" value="#{ editUserController.user.dob }"
                                      required="true" requiredMessage="Please enter the worker's date of birth">
                             <f:convertDateTime pattern="dd-MM-yyyy" />
                         </h:inputText>
-                    </div>
-                </div>
+                    </h:panelGroup>
+                </h:panelGroup>
 
                 <!-- Mobile -->
-                <div class="grid-x">
-                    <div class="small-2 cell">
+                <h:panelGroup layout="block" styleClass="grid-x">
+                    <h:panelGroup layout="block" styleClass="small-2 cell">
                         <h:outputLabel for="mobile">Mobile:</h:outputLabel>
-                    </div>
-                    <div class="small-6 cell">
+                    </h:panelGroup>
+                    <h:panelGroup layout="block" styleClass="small-6 cell">
                         <h:inputText id="mobile" value="#{ editUserController.user.mobile }"
                                      required="true" requiredMessage="Please enter the worker's mobile number"
                                      validatorMessage="Mobile number must be 10 digits long">
                             <f:validateLength maximum="10" minimum="10" />
                         </h:inputText>
-                    </div>
-                </div>
+                    </h:panelGroup>
+                </h:panelGroup>
 
                 <!-- Street Number -->
-                <div class="grid-x">
-                    <div class="small-2 cell">
+                <h:panelGroup layout="block" styleClass="grid-x">
+                    <h:panelGroup layout="block" styleClass="small-2 cell">
                         <h:outputLabel for="streetnumber">Street Number:</h:outputLabel>
-                    </div>
-                    <div class="small-6 cell">
+                    </h:panelGroup>
+                    <h:panelGroup layout="block" styleClass="small-6 cell">
                         <h:inputText id="streetnumber" value="#{ editUserController.user.address.streetNumber }"
                                      required="true" requiredMessage="Please enter the worker's street number" />
-                    </div>
-                </div>
+                    </h:panelGroup>
+                </h:panelGroup>
 
                 <!-- Street Address -->
-                <div class="grid-x">
-                    <div class="small-2 cell">
+                <h:panelGroup layout="block" styleClass="grid-x">
+                    <h:panelGroup layout="block" styleClass="small-2 cell">
                         <h:outputLabel for="streetaddress">Street Address:</h:outputLabel>
-                    </div>
-                    <div class="small-6 cell">
+                    </h:panelGroup>
+                    <h:panelGroup layout="block" styleClass="small-6 cell">
                         <h:inputText id="streetaddress" value="#{ editUserController.user.address.streetAddress }"
                                      required="true" requiredMessage="Please enter the worker's street number" />
-                    </div>
-                </div>
+                    </h:panelGroup>
+                </h:panelGroup>
 
                 <!-- Suburb -->
-                <div class="grid-x">
-                    <div class="small-2 cell">
+                <h:panelGroup layout="block" styleClass="grid-x">
+                    <h:panelGroup layout="block" styleClass="small-2 cell">
                         <h:outputLabel for="suburb">Suburb:</h:outputLabel>
-                    </div>
-                    <div class="small-6 cell">
+                    </h:panelGroup>
+                    <h:panelGroup layout="block" styleClass="small-6 cell">
                         <h:inputText id="suburb" value="#{ editUserController.user.address.suburb }"
                                      required="true" requiredMessage="Please enter the worker's suburb" />
-                    </div>
-                </div>
+                    </h:panelGroup>
+                </h:panelGroup>
 
                 <!-- State -->
-                <div class="grid-x">
-                    <div class="small-2 cell">
+                <h:panelGroup layout="block" styleClass="grid-x">
+                    <h:panelGroup layout="block" styleClass="small-2 cell">
                         <h:outputLabel for="state">State:</h:outputLabel>
-                    </div>
-                    <div class="small-6 cell">
+                    </h:panelGroup>
+                    <h:panelGroup layout="block" styleClass="small-6 cell">
                         <h:inputText id="state" value="#{ editUserController.user.address.state }"
                                      required="true" requiredMessage="Please enter the worker's state" />
-                    </div>
-                </div>
+                    </h:panelGroup>
+                </h:panelGroup>
 
                 <!-- Postcode -->
-                <div class="grid-x">
-                    <div class="small-2 cell">
+                <h:panelGroup layout="block" styleClass="grid-x">
+                    <h:panelGroup layout="block" styleClass="small-2 cell">
                         <h:outputLabel for="postcode">Postcode:</h:outputLabel>
-                    </div>
-                    <div class="small-6 cell">
+                    </h:panelGroup>
+                    <h:panelGroup layout="block" styleClass="small-6 cell">
                         <h:inputText id="postcode" value="#{ editUserController.user.address.postcode }"
                                      required="true" requiredMessage="Please enter the worker's postcode" />
-                    </div>
-                </div>
+                    </h:panelGroup>
+                </h:panelGroup>
 
                 <!-- Password -->
-                <div class="grid-x">
-                    <div class="small-2 cell">
+                <h:panelGroup layout="block" styleClass="grid-x">
+                    <h:panelGroup layout="block" styleClass="small-2 cell">
                         <h:outputLabel for="password">Password: </h:outputLabel>
-                    </div>
-                    <div class="small-6 cell">
+                    </h:panelGroup>
+                    <h:panelGroup layout="block" styleClass="small-6 cell">
                         <h:inputSecret id="password" value="#{ editUserController.password }"
                                        validatorMessage="Password must contains at least one lowercase character, uppercase character, and a digit with a length between 6 and 20 characters">
                             <f:validateRegex pattern="((?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20})?" />
                         </h:inputSecret>
-                    </div>
-                </div>
+                    </h:panelGroup>
+                </h:panelGroup>
 
                 <!-- Confirm Password -->
-                <div class="grid-x">
-                    <div class="small-2 cell">
+                <h:panelGroup layout="block" styleClass="grid-x">
+                    <h:panelGroup layout="block" styleClass="small-2 cell">
                         <h:outputLabel for="confirm_password">Confirm Password: </h:outputLabel>
-                    </div>
-                    <div class="small-6 cell">
+                    </h:panelGroup>
+                    <h:panelGroup layout="block" styleClass="small-6 cell">
                         <h:inputSecret id="confirm_password" value="#{ editUserController.confirmPassword }" />
-                    </div>
-                </div>
+                    </h:panelGroup>
+                </h:panelGroup>
 
-                <div class="grid-x grid-padding-x">
-                    <div class="cell small-1">
-                        <h:commandButton class="success button" value="Save" action="#{ editUserController.saveUser }" />
-                    </div>
+                <h:panelGroup layout="block" styleClass="grid-x grid-padding-x">
+                    <h:panelGroup layout="block" styleClass="cell small-1">
+                        <h:commandButton styleClass="success button" value="Save" action="#{ editUserController.saveUser }" />
+                    </h:panelGroup>
 
-                    <div class="cell small-1">
-                        <h:commandButton class="alert button" value="Cancel" action="#{ editUserController.cancel }" immediate="true" />
-                    </div>
-                </div>
-            </div>
+                    <h:panelGroup layout="block" styleClass="cell small-1">
+                        <h:commandButton styleClass="alert button" value="Cancel" action="#{ editUserController.cancel }" immediate="true" />
+                    </h:panelGroup>
+                </h:panelGroup>
+            </h:panelGroup>
 
         </h:form>
 

@@ -11,52 +11,52 @@
     <h:body>
         <ui:include src="/WEB-INF/menu.xhtml" />
 
-        <div class="grid-x medium-grid-frame grid-padding-x grid-padding-y">
-            <div class="cell medium-4">
+        <h:panelGroup layout="block" styleClass="grid-x medium-grid-frame grid-padding-x grid-padding-y">
+            <h:panelGroup layout="block" styleClass="cell medium-4">
                 <h:graphicImage url="#{ plantController.plant.imageUrl }" />
-            </div>
+            </h:panelGroup>
 
-            <div class="cell grid-y grid-padding-x medium-cell-block-container medium-auto">
-                <div class="cell shrink header medium-cell-block-container">
+            <h:panelGroup layout="block" styleClass="cell grid-y grid-padding-x medium-cell-block-container medium-auto">
+                <h:panelGroup layout="block" styleClass="cell shrink header medium-cell-block-container">
                     <h1>#{ plantController.plant.name }</h1>
-                    <div class="grid-x grid-padding-x">
-                        <div class="cell medium-4">
+                    <h:panelGroup layout="block" styleClass="grid-x grid-padding-x">
+                        <h:panelGroup layout="block" styleClass="cell medium-4">
                             <h6>Family: #{ plantController.plant.family }</h6>
-                        </div>
-                    </div>
-                </div>
+                        </h:panelGroup>
+                    </h:panelGroup>
+                </h:panelGroup>
 
-                <div class="cell grid-x grid-padding-x">
+                <h:panelGroup layout="block" styleClass="cell grid-x grid-padding-x">
                     <h:outputText value="#{ plantController.plant.description }" />
-                </div>
+                </h:panelGroup>
 
-                <div class="cell grid-x grid-padding-x">
+                <h:panelGroup layout="block" styleClass="cell grid-x grid-padding-x">
                     <h:form id="savePlantForm" rendered="#{ loginController.user != null and loginController.userGroup.groupName == 'users' }">
-                        <h:commandButton class="success button" value="Save" action="#{ plantController.savePlant }"
+                        <h:commandButton styleClass="success button" value="Save" action="#{ plantController.savePlant }"
                                          rendered="#{ not loginController.user.plants.contains(plantController.plant) }">
                             <f:ajax execute="@form" render="@form" />
                         </h:commandButton>
 
-                        <h:commandButton class="alert button" value="Saved" action="#{ plantController.unsavePlant }"
+                        <h:commandButton styleClass="alert button" value="Saved" action="#{ plantController.unsavePlant }"
                                          rendered="#{ loginController.user.plants.contains(plantController.plant) }">
                             <f:ajax execute="@form" render="@form" />
                         </h:commandButton>
                     </h:form>
-                </div>
+                </h:panelGroup>
 
-                <div class="cell grid-x grid-padding-x">
+                <h:panelGroup layout="block" styleClass="cell grid-x grid-padding-x">
                     <h:form id="editPlantForm">
-                        <h:commandButton class="button cell small-1" value="Edit" action="editplant.xhtml"
+                        <h:commandButton styleClass="button cell small-1" value="Edit" action="editplant.xhtml"
                                          rendered="#{ loginController.userGroup.groupName == 'workers' or loginController.userGroup.groupName == 'admin' }">
                             <f:param name="plantId" value="#{ plantController.plant.id }" />
                         </h:commandButton>
                         
-                        <h:commandButton class="alert button cell small-1" value="Delete" action="#{ plantController.delete() }"
+                        <h:commandButton styleClass="alert button cell small-1" value="Delete" action="#{ plantController.delete() }"
                                          rendered="#{ loginController.userGroup.groupName == 'workers' or loginController.userGroup.groupName == 'admin' }" />
                     </h:form>
-                </div>
-            </div>
-        </div>
+                </h:panelGroup>
+            </h:panelGroup>
+        </h:panelGroup>
 
         <ui:include src="/WEB-INF/body.xhtml" />
     </h:body>
