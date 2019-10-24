@@ -7,7 +7,6 @@ package com.fit5042.ozflora.mbeans;
 
 import com.fit5042.ozflora.auth.entities.User;
 import com.fit5042.ozflora.auth.entities.UserGroup;
-import com.fit5042.ozflora.controllers.LoginController;
 import com.fit5042.ozflora.repository.UserRepository;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
@@ -89,6 +88,15 @@ public class UserManagedBean implements Serializable {
     public UserGroup getUserGroup(String email) {
         try {
             return this.userRepository.findUserGroupById(email);
+        } catch (Exception e) {
+            logger.log(Level.SEVERE, null, e);
+        }
+        return null;
+    }
+    
+    public List<User> getUsers(String name, String email) {
+        try {
+            return this.userRepository.searchUsers(name, email);
         } catch (Exception e) {
             logger.log(Level.SEVERE, null, e);
         }

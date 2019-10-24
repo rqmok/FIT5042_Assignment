@@ -86,4 +86,14 @@ public interface UserRepository {
      * @throws Exception 
      */
     List<User> getAllUsers() throws Exception;
+    
+    /**
+     * Search for users based on given parameters.
+     * 
+     * @param name The name of the user to search.
+     * @param email The email of the user to search.
+     * @return A {@link List} of all found {@link User Users}.
+     * @throws Exception 
+     */
+    List<User> searchUsers(String name, String email) throws Exception;
 }

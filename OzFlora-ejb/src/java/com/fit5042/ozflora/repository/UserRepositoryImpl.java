@@ -14,6 +14,7 @@ import com.fit5042.ozflora.auth.entities.WorkerUser;
 import com.fit5042.ozflora.repository.entities.Plant;
 import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -21,6 +22,11 @@ import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Expression;
+import javax.persistence.criteria.Predicate;
+import javax.persistence.criteria.Root;
 
 /**
  *
@@ -105,6 +111,29 @@ public class UserRepositoryImpl implements UserRepository {
     @Override
     public List<User> getAllUsers() throws Exception {
         return this.entityManager.createNamedQuery(User.GET_ALL_QUERY_NAME).getResultList();
+    }
+
+    @Override
+    public List<User> searchUsers(String name, String email) throws Exception {
+        CriteriaBuilder builder = entityManager.getCriteriaBuilder();
+        CriteriaQuery query = builder.createQuery(User.class);
+        Root<User> root = query.from(User.class);
+        
+        List<Predicate> predicates = new ArrayList<>();
+        
+        if (name != null && !name.isEmpty()) {
+            Expression<String> expression = root.get("name").as(String.class);
+            predicates.add(builder.like(builder.lower(expression), "%" + name.toLowerCase() + "%"));
+        }
+        
+        if (email != null && !email.isEmpty()) {
+            Expression<String> expression = root.get("email").as(String.class);
+            predicates.add(builder.like(builder.lower(expression), "%" + email.toLowerCase() + "%"));
+        }
+        
+        query.where(builder.and(predicates.toArray(new Predicate[predicates.size()])));
+        
+        return entityManager.createQuery(query).getResultList();
     }
     
 }

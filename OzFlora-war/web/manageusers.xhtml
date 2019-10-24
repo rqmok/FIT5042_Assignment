@@ -4,13 +4,34 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
     <h:head>
         <title>#{ titleController.title }</title>
         <ui:include src="/WEB-INF/head.xhtml" />
     </h:head>
     <h:body>
         <ui:include src="/WEB-INF/menu.xhtml" />
+
+        <h:form id="usersSearchForm">
+            <h:panelGroup layout="block" styleClass="grid-container fluid" style="margin-top: 20px;">
+                <h:panelGroup layout="block" styleClass="grid-x grid-margin-x">
+                    <h:panelGroup layout="block" styleClass="cell auto">
+                        <h:inputText id="nameSearchField" value="#{ manageUsersController.name }" a:placeholder="Name" />
+                    </h:panelGroup>
+
+                    <h:panelGroup layout="block" styleClass="cell auto">
+                        <h:inputText id="emailSearchField" value="#{ manageUsersController.email }" a:placeholder="Email" />
+                    </h:panelGroup>
+
+                    <h:panelGroup layout="block" styleClass="cell small-1">
+                        <h:commandButton styleClass="button" value="Search" action="#{ manageUsersController.searchUsers }">
+                            <f:ajax execute="@form" render="usersTable" />
+                        </h:commandButton>
+                    </h:panelGroup>
+                </h:panelGroup>
+            </h:panelGroup>
+        </h:form>
 
         <!-- Add User -->
         <h:panelGroup layout="block" styleClass="grid-x grid-padding-x">
@@ -27,7 +48,7 @@
                      value="#{ manageUsersController.users }"
                      var="user"
                      styleClass="table">
-            
+
             <c:set var="groupName" value="#{ manageUsersController.getUserGroup(user).groupName }" />
 
             <h:column>
@@ -44,7 +65,7 @@
                 <f:facet name="header">Group</f:facet>
                 #{ groupName }
             </h:column>
-            
+
             <h:column>
                 <h:form id="userDetailsForm" rendered="#{ groupName != 'admin'}">
                     <h:commandButton styleClass="button secondary" value="View" action="userdetails.xhtml">
@@ -52,7 +73,7 @@
                     </h:commandButton>
                 </h:form>
             </h:column>
-            
+
             <h:column>
                 <h:form id="editUserLinkForm" rendered="#{ groupName != 'admin' }">
                     <h:commandButton styleClass="button" value="Edit" action="editworker.xhtml" rendered="#{ groupName == 'workers' }">
@@ -63,7 +84,7 @@
                     </h:commandButton>
                 </h:form>
             </h:column>
-            
+
             <h:column>
                 <h:form id="deleteuserLinkForm" rendered="#{ groupName != 'admin' }">
                     <h:commandButton styleClass="alert button" value="Delete" action="#{ manageUsersController.removeUser(user) }">

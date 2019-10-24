@@ -28,6 +28,10 @@ public class ManageUsersController {
     private UserManagedBean userManagedBean;
     
     private List<User> users;
+    
+    // Searching fields.
+    private String name;
+    private String email;
 
     /**
      * Creates a new instance of ManageUsersController
@@ -42,6 +46,10 @@ public class ManageUsersController {
     
     public UserGroup getUserGroup(User user) {
         return this.userManagedBean.getUserGroup(user.getEmail());
+    }
+    
+    public void searchUsers() {
+        this.users = this.userManagedBean.getUsers(name, email);
     }
 
     public List<User> getUsers() {
@@ -70,6 +78,22 @@ public class ManageUsersController {
 
     public void setUserManagedBean(UserManagedBean userManagedBean) {
         this.userManagedBean = userManagedBean;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
     
 }
