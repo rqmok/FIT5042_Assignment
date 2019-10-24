@@ -30,6 +30,17 @@ public class Plant implements Serializable {
     private String imageUrl;
     private String family;
 
+    public Plant() {
+    }
+
+    public Plant(int id, String name, String description, String imageUrl, String family) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.imageUrl = imageUrl;
+        this.family = family;
+    }
+
     @Id
     @Column(name = "plant_id")
     public int getId() {
