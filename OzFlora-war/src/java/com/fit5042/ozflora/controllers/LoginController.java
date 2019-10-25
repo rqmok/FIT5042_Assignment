@@ -87,7 +87,7 @@ public class LoginController implements Serializable {
 
         try {
             this.setUser(this.userRepository.findUserById(principal.getName()));
-            this.setUserGroup(this.userRepository.findUserGroupById(user.getEmail()));
+            this.setUserGroup(this.getUser().getUserGroup());
 
             logger.log(Level.INFO, "Authenticated user {0}", user.getEmail());
 

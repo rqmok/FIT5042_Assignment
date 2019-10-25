@@ -9,6 +9,9 @@ import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.MapsId;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
@@ -29,6 +32,11 @@ public class UserGroup implements Serializable {
 
     @Column(name = "groupname", nullable = false, length = 32)
     private String groupName;
+    
+    @OneToOne
+    @MapsId
+    @JoinColumn(name = "email", referencedColumnName = "email")
+    private User user;
 
     public UserGroup() {
     }
@@ -72,6 +80,14 @@ public class UserGroup implements Serializable {
     @Override
     public String toString() {
         return "com.fit5042.ozflora.auth.entities.Group[ id=" + email + " ]";
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
 }

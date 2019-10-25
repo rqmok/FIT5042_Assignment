@@ -58,8 +58,10 @@ public class UserRepositoryImpl implements UserRepository {
             userGroup.setGroupName(UserGroup.USERS_GROUP);
         }
         
+        user.setUserGroup(userGroup);
+        userGroup.setUser(user);
+        
         entityManager.persist(user);
-        entityManager.persist(userGroup);
         
         return user;
     }
