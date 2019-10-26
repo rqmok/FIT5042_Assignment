@@ -48,7 +48,7 @@ public class EditPlantController implements Serializable {
     }
     
     private String getPlantDetailsRedirect() {
-        return "detail?faces-redirect=true&plantId=" + plant.getId();
+        return PageUrl.getPageRedirect(PageUrl.PLANT_DETAILS) + "&plantId=" + plant.getId();
     }
     
     public String savePlant() {

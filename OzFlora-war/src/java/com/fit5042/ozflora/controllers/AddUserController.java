@@ -114,15 +114,15 @@ public class AddUserController {
         if (this.loginController.getUserGroup() != null) {
             if (this.loginController.getUserGroup().getGroupName().equals(UserGroup.ADMIN_GROUP)) {
                 // Admin has added the user so return them to the manage users page.
-                return "manageusers?faces-redirect=true";
+                return PageUrl.getPageRedirect(PageUrl.MANAGE_USERS);
             }
         }
 
         if (registered) {
-            return "registered?faces-redirect=true";
+            return PageUrl.getPageRedirect(PageUrl.REGISTERED);
         }
 
-        return "login?faces-redirect=true";
+        return PageUrl.getPageRedirect(PageUrl.LOGIN);
     }
 
     public String registerWebsiteUser() {

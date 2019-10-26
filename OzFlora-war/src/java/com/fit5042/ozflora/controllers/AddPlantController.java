@@ -74,6 +74,10 @@ public class AddPlantController {
         this.description = description;
     }
     
+    private String getRedirectUrl() {
+        return PageUrl.getPageRedirect(PageUrl.INDEX);
+    }
+    
     public String addPlant() {
         Plant plant = new Plant();
         plant.setName(name);
@@ -83,11 +87,11 @@ public class AddPlantController {
         
         this.plantManagedBean.addPlant(plant);
         
-        return "index?faces-redirect=true";
+        return this.getRedirectUrl();
     }
     
     public String cancel() {
-        return "index?faces-redirect=true";
+        return this.getRedirectUrl();
     }
     
 }

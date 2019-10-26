@@ -70,7 +70,7 @@ public class PlantController implements Serializable {
     
     public String delete() {
         plantManagedBean.removePlantById(plant.getId());
-        return "plants?faces-redirect=true";
+        return PageUrl.getPageRedirect(PageUrl.PLANTS);
     }
 
 }

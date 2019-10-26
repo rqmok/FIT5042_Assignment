@@ -80,7 +80,7 @@ public class LoginController implements Serializable {
         } catch (ServletException e) {
             logger.log(Level.SEVERE, e.getMessage());
             context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Login failed", null));
-            return "login";
+            return PageUrl.LOGIN;
         }
 
         Principal principal = request.getUserPrincipal();
@@ -98,7 +98,7 @@ public class LoginController implements Serializable {
             logger.log(Level.SEVERE, e.getMessage());
         }
 
-        return "index?faces-redirect=true";
+        return PageUrl.getPageRedirect(PageUrl.INDEX);
     }
 
     public String logout() {
@@ -114,7 +114,7 @@ public class LoginController implements Serializable {
             logger.log(Level.SEVERE, e.getMessage());
         }
 
-        return "login?faces-redirect=true";
+        return PageUrl.getPageRedirect(PageUrl.LOGIN);
     }
 
     public UserRepository getUserRepository() {

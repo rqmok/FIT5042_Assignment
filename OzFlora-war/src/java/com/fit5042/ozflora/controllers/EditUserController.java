@@ -88,6 +88,10 @@ public class EditUserController implements Serializable {
             }
         }
     }
+    
+    private String getManagedUsersRedirect() {
+        return PageUrl.getPageRedirect(PageUrl.MANAGE_USERS);
+    }
 
     public String saveUser() {
         if (user != null) {
@@ -101,11 +105,11 @@ public class EditUserController implements Serializable {
 
             this.userManagedBean.saveUser(user);
         }
-        return "manageusers?redirect-faces=true";
+        return this.getManagedUsersRedirect();
     }
 
     public String cancel() {
-        return "manageusers?redirect-faces=true";
+        return this.getManagedUsersRedirect();
     }
 
     public User getUser() {

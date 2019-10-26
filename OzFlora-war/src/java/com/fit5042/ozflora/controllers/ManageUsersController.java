@@ -32,6 +32,7 @@ public class ManageUsersController {
     // Searching fields.
     private String name;
     private String email;
+    private String groupname;
 
     /**
      * Creates a new instance of ManageUsersController
@@ -49,7 +50,7 @@ public class ManageUsersController {
     }
     
     public void searchUsers() {
-        this.users = this.userManagedBean.getUsers(name, email);
+        this.users = this.userManagedBean.getUsers(name, email, groupname);
     }
 
     public List<User> getUsers() {
@@ -67,9 +68,9 @@ public class ManageUsersController {
     
     public String editUser(User user) {
         if (user instanceof WorkerUser) {
-            return "editworker?faces-redirect=true";
+            return PageUrl.getPageRedirect(PageUrl.EDIT_WORKER);
         }
-        return "editwebsiteuser?faces-redirect=true";
+        return PageUrl.getPageRedirect(PageUrl.EDIT_WEBSITE_USER);
     }
 
     public UserManagedBean getUserManagedBean() {
@@ -94,6 +95,14 @@ public class ManageUsersController {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getGroupname() {
+        return groupname;
+    }
+
+    public void setGroupname(String groupname) {
+        this.groupname = groupname;
     }
     
 }

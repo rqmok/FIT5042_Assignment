@@ -23,6 +23,10 @@
                     <h:panelGroup layout="block" styleClass="cell auto">
                         <h:inputText id="emailSearchField" value="#{ manageUsersController.email }" a:placeholder="Email" />
                     </h:panelGroup>
+                    
+                    <h:panelGroup layout="block" styleClass="cell auto">
+                        <h:inputText id="groupSearchField" value="#{ manageUsersController.groupname }" a:placeholder="Group" />
+                    </h:panelGroup>
 
                     <h:panelGroup layout="block" styleClass="cell small-1">
                         <h:commandButton styleClass="button" value="Search" action="#{ manageUsersController.searchUsers }">

@@ -36,22 +36,69 @@
             <form-error-page>/faces/login.xhtml</form-error-page>
         </form-login-config>
     </login-config>
-	
-<!--    <security-role>
+
+    <!-- Roles -->
+    <security-role>
         <description>Users</description>
         <role-name>users</role-name>
-    </security-role>-->
-	
+    </security-role>
+    
+    <security-role>
+        <description>Workers</description>
+        <role-name>workers</role-name>
+    </security-role>
+    
+    <security-role>
+        <description>Admin</description>
+        <role-name>admin</role-name>
+    </security-role>
+
+    <!-- Access Constraints for Roles -->
     <security-constraint>
         <display-name>Restricted to users</display-name>
         <web-resource-collection>
             <web-resource-name>Restricted Access</web-resource-name>
-            <url-pattern>/user/*</url-pattern>
-            <url-pattern>/faces/user/*</url-pattern>
+            <url-pattern>/faces/profile.xhtml</url-pattern>
         </web-resource-collection>
-<!--        <auth-constraint>
+        <auth-constraint>
             <role-name>users</role-name>
-        </auth-constraint>-->
+            <role-name>workers</role-name>
+            <role-name>admin</role-name>
+        </auth-constraint>
+        <user-data-constraint>
+            <transport-guarantee>NONE</transport-guarantee>
+        </user-data-constraint>
+    </security-constraint>
+    
+    <security-constraint>
+        <display-name>Restricted to workers</display-name>
+        <web-resource-collection>
+            <web-resource-name>Restricted Access</web-resource-name>
+            <url-pattern>/faces/addplant.xhtml</url-pattern>
+            <url-pattern>/faces/editplant.xhtml</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>workers</role-name>
+            <role-name>admin</role-name>
+        </auth-constraint>
+        <user-data-constraint>
+            <transport-guarantee>NONE</transport-guarantee>
+        </user-data-constraint>
+    </security-constraint>
+    
+    <security-constraint>
+        <display-name>Restricted to admin</display-name>
+        <web-resource-collection>
+            <web-resource-name>Restricted Access</web-resource-name>
+            <url-pattern>/faces/addworker.xhtml</url-pattern>
+            <url-pattern>/faces/editworker.xhtml</url-pattern>
+            <url-pattern>/faces/editwebsiteuser.xhtml</url-pattern>
+            <url-pattern>/faces/manageusers.xhtml</url-pattern>
+            <url-pattern>/faces/userdetails.xhtml</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>admin</role-name>
+        </auth-constraint>
         <user-data-constraint>
             <transport-guarantee>NONE</transport-guarantee>
         </user-data-constraint>

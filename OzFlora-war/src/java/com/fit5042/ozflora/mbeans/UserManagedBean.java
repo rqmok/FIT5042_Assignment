@@ -94,9 +94,9 @@ public class UserManagedBean implements Serializable {
         return null;
     }
     
-    public List<User> getUsers(String name, String email) {
+    public List<User> getUsers(String name, String email, String groupname) {
         try {
-            return this.userRepository.searchUsers(name, email);
+            return this.userRepository.searchUsers(name, email, groupname);
         } catch (Exception e) {
             logger.log(Level.SEVERE, null, e);
         }

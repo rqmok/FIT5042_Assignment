@@ -92,8 +92,9 @@ public interface UserRepository {
      * 
      * @param name The name of the user to search.
      * @param email The email of the user to search.
+     * @param groupname The group of the user.
      * @return A {@link List} of all found {@link User Users}.
      * @throws Exception 
      */
-    List<User> searchUsers(String name, String email) throws Exception;
+    List<User> searchUsers(String name, String email, String groupname) throws Exception;
 }
