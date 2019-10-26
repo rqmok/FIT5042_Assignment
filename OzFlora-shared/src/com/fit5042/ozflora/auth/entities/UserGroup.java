@@ -13,6 +13,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.MapsId;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 
 /**
  *
@@ -28,14 +30,18 @@ public class UserGroup implements Serializable {
 
     @Id
     @Column(name = "email", nullable = false, length = 255)
+    @NotNull
+    @Pattern(regexp = "^(.+)@(.+)(\\.)(.+)$")
     private String email;
 
     @Column(name = "groupname", nullable = false, length = 32)
+    @NotNull
     private String groupName;
     
     @OneToOne
     @MapsId
     @JoinColumn(name = "email", referencedColumnName = "email")
+    @NotNull
     private User user;
 
     public UserGroup() {

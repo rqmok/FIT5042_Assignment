@@ -10,6 +10,7 @@ import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
+import javax.validation.constraints.NotNull;
 
 /**
  *
@@ -20,22 +21,27 @@ import javax.persistence.Embeddable;
 public class Address implements Serializable {
     
     @Column(name = "street_number")
+    @NotNull
     private String streetNumber;
     
     @Column(name = "street_address")
+    @NotNull
     private String streetAddress;
     
+    @NotNull
     private String suburb;
     
     @Column(name = "postcode")
-    private String postcode;
+    @NotNull
+    private int postcode;
     
+    @NotNull
     private String state;
 
     public Address() {
     }
 
-    public Address(String streetNumber, String streetAddress, String suburb, String postcode, String state) {
+    public Address(String streetNumber, String streetAddress, String suburb, int postcode, String state) {
         this.streetNumber = streetNumber;
         this.streetAddress = streetAddress;
         this.suburb = suburb;
@@ -67,11 +73,11 @@ public class Address implements Serializable {
         this.suburb = suburb;
     }
 
-    public String getPostcode() {
+    public int getPostcode() {
         return postcode;
     }
 
-    public void setPostcode(String postcode) {
+    public void setPostcode(int postcode) {
         this.postcode = postcode;
     }
 

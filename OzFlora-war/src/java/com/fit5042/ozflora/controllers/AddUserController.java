@@ -48,7 +48,7 @@ public class AddUserController {
     private String streetAddress;
     private String suburb;
     private String state;
-    private String postcode;
+    private int postcode;
     private String password;
     private String confirmPassword;
 
@@ -222,11 +222,11 @@ public class AddUserController {
         this.state = state;
     }
 
-    public String getPostcode() {
+    public int getPostcode() {
         return postcode;
     }
 
-    public void setPostcode(String postcode) {
+    public void setPostcode(int postcode) {
         this.postcode = postcode;
     }
 

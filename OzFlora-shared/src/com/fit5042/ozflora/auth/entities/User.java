@@ -18,6 +18,8 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 
 /**
  * A basic user.
@@ -38,15 +40,20 @@ public abstract class User implements Serializable {
 
     @Id
     @Column(name = "email", nullable = false, length = 255)
+    @NotNull
+    @Pattern(regexp = "^(.+)@(.+)(\\.)(.+)$")
     private String email;
 
     @Column(name = "name", nullable = false, length = 30)
+    @NotNull
     private String name;
 
     @Column(name = "password", nullable = false, length = 64)
+    @NotNull
     private String password;
     
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+    @NotNull
     private UserGroup userGroup;
 
     public User() {

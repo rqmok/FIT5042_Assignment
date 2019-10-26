@@ -122,7 +122,10 @@
                     </h:panelGroup>
                     <h:panelGroup layout="block" styleClass="small-6 cell">
                         <h:inputText id="postcode" value="#{ addUserController.postcode }"
-                                     required="true" requiredMessage="Please enter the worker's postcode" />
+                                     required="true" requiredMessage="Please enter the worker's postcode"
+                                     validatorMessage="Postcode must be a 4 digit number">
+                            <f:validateLength minimum="4" maximum="4" />
+                        </h:inputText>
                     </h:panelGroup>
                 </h:panelGroup>
 

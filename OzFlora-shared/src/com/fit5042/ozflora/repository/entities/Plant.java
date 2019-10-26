@@ -11,6 +11,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.validation.constraints.NotNull;
 
 /**
  * Represents a Plant.
@@ -24,10 +25,20 @@ public class Plant implements Serializable {
 
     public static final String GET_ALL_QUERY_NAME = "Plant.getAll";
 
+    @Id
+    @Column(name = "plant_id")
     private int id;
+    
+    @NotNull
     private String name;
+    
+    @NotNull
     private String description;
+    
+    @Column(name = "image_url")
     private String imageUrl;
+    
+    @NotNull
     private String family;
 
     public Plant() {
@@ -41,8 +52,6 @@ public class Plant implements Serializable {
         this.family = family;
     }
 
-    @Id
-    @Column(name = "plant_id")
     public int getId() {
         return id;
     }
@@ -67,7 +76,6 @@ public class Plant implements Serializable {
         this.description = description;
     }
 
-    @Column(name = "image_url")
     public String getImageUrl() {
         return imageUrl;
     }

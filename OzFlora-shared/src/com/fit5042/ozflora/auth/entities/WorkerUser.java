@@ -14,6 +14,9 @@ import javax.persistence.Entity;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
+import javax.validation.constraints.Size;
 
 /**
  * Represents a worker allowed to manage web site content.
@@ -26,12 +29,17 @@ import javax.persistence.TemporalType;
 public class WorkerUser extends User implements Serializable {
     
     @Column(name = "mobile", nullable = false, length = 10)
+    @Size(min = 10, max = 10)
+    @NotNull
     private String mobile;
     
     @Temporal(TemporalType.DATE)
+    @Past
+    @NotNull
     private Date dob;
     
     @Embedded
+    @NotNull
     private Address address;
     
     public WorkerUser() {
