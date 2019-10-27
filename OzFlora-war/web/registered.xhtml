@@ -11,11 +11,15 @@
     <h:body>
         <ui:include src="/WEB-INF/menu.xhtml" />
 
-        <h3>Registration Successful!</h3>
-        
-        <p>
-            <h:outputLink value="login.xhtml">Sign In</h:outputLink>
-        </p>
+        <h:panelGroup layout="block" styleClass="grid-container">
+
+            <h3>Registration Successful!</h3>
+
+            <p>
+                <h:outputLink value="login.xhtml">Sign In</h:outputLink>
+            </p>
+
+        </h:panelGroup>
 
         <ui:include src="/WEB-INF/body.xhtml" />
     </h:body>

@@ -13,6 +13,10 @@
     <h:body>
         <ui:include src="/WEB-INF/menu.xhtml" />
 
+        <h:panelGroup layout="block" styleClass="grid-container">
+            <h1>Manage Users</h1>
+        </h:panelGroup>
+
         <h:form id="usersSearchForm">
             <h:panelGroup layout="block" styleClass="grid-container fluid" style="margin-top: 20px;">
                 <h:panelGroup layout="block" styleClass="grid-x grid-margin-x">
@@ -23,7 +27,7 @@
                     <h:panelGroup layout="block" styleClass="cell auto">
                         <h:inputText id="emailSearchField" value="#{ manageUsersController.email }" a:placeholder="Email" />
                     </h:panelGroup>
-                    
+
                     <h:panelGroup layout="block" styleClass="cell auto">
                         <h:inputText id="groupSearchField" value="#{ manageUsersController.groupname }" a:placeholder="Group" />
                     </h:panelGroup>
