@@ -14,7 +14,9 @@ import javax.ejb.Singleton;
 @Singleton
 public class AboutStorageImpl implements AboutStorage {
 
-    private String aboutText = "OzFlora is a directory for native Australian plants. The purpose of this directory is to provide users a passion for studying plants with the information that they need.";
+    private String aboutText = "OzFlora is a directory for native Australian plants. "
+            + "The purpose of this directory is to provide users a passion for studying plants with the information that they need."
+            + "Do you have any suggestions? Please send an email to suggestions@example.com to clearly outline what you would like to suggest.";
 
     public String getAboutText() {
         return aboutText;
