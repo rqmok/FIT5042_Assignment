@@ -5,10 +5,15 @@
  */
 package com.fit5042.ozflora.repository.entities;
 
+import com.fit5042.ozflora.auth.entities.WebsiteUser;
 import java.io.Serializable;
+import java.util.Set;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.validation.constraints.NotNull;
@@ -40,6 +45,9 @@ public class Plant implements Serializable {
     
     @NotNull
     private String family;
+    
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private Set<WebsiteUser> websiteUsers;
 
     public Plant() {
     }
@@ -90,6 +98,22 @@ public class Plant implements Serializable {
 
     public void setFamily(String family) {
         this.family = family;
+    }
+
+    public Set<WebsiteUser> getWebsiteUsers() {
+        return websiteUsers;
+    }
+
+    public void setWebsiteUsers(Set<WebsiteUser> websiteUsers) {
+        this.websiteUsers = websiteUsers;
+    }
+    
+    public void addWebsiteUser(WebsiteUser user) {
+        this.websiteUsers.add(user);
+    }
+    
+    public void removeWebsiteUser(WebsiteUser user) {
+        this.websiteUsers.remove(user);
     }
 
     @Override

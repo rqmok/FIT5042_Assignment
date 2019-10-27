@@ -79,7 +79,9 @@
                 
                 <h:panelGroup layout="block" styleClass="grid-x grid-margin-x right">
                     <h:panelGroup layout="block" styleClass="cell small-1">
-                        <h:commandButton styleClass="success button" value="Save" action="#{ editPlantController.savePlant }" />
+                        <h:commandButton styleClass="success button" value="Save" action="#{ editPlantController.savePlant }">
+                            <f:ajax execute="@form" render="@form" />
+                        </h:commandButton>
                     </h:panelGroup>
                     <h:panelGroup layout="block" styleClass="cell small-1">
                         <h:commandButton styleClass="alert button" value="Cancel" action="#{ editPlantController.cancelEdit }" />
@@ -88,6 +90,8 @@
             </h:panelGroup>
             
         </h:form>
+        
+        <h:messages />
 
         <ui:include src="/WEB-INF/body.xhtml" />
     </h:body>

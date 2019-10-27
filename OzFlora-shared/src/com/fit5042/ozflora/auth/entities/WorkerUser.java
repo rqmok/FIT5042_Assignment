@@ -29,12 +29,12 @@ import javax.validation.constraints.Size;
 public class WorkerUser extends User implements Serializable {
     
     @Column(name = "mobile", nullable = false, length = 10)
-    @Size(min = 10, max = 10)
+    @Size(min = 10, max = 10, message = "Mobile number has to be 10 digits")
     @NotNull
     private String mobile;
     
     @Temporal(TemporalType.DATE)
-    @Past
+    @Past(message = "Date of birth can only be in the past")
     @NotNull
     private Date dob;
     

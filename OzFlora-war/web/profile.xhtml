@@ -13,58 +13,68 @@
 
         <h:panelGroup layout="block" styleClass="grid-y grid-padding-x grid-padding-y small-offset-1">
             <h:panelGroup layout="block" styleClass="cell">
-                <h1>#{ loginController.user.name }</h1>
-                <h5>#{ loginController.user.email }</h5>
+                <h1>#{ user.name }</h1>
+                <h5>#{ user.email }</h5>
             </h:panelGroup>
             
             <h:panelGroup layout="block" styleClass="cell small-1">
                 <h:form id="editProfileForm">
                     <h:commandButton value="Edit Details"
                                      styleClass="button"
-                                     action="editwebsiteuser.xhtml">
-                        <f:param name="userId" value="#{ loginController.user.email }" />
+                                     action="editwebsiteuser.xhtml"
+                                     rendered="#{ user_group.groupName == 'users' }">
+                        <f:param name="userId" value="#{ user.email }" />
+                        <f:param name="returnPage" value="profile" />
+                    </h:commandButton>
+                    
+                    <h:commandButton value="Edit Details"
+                                     styleClass="button"
+                                     action="editworker.xhtml"
+                                     rendered="#{ user_group.groupName == 'workers' }">
+                        <f:param name="userId" value="#{ user.email }" />
+                        <f:param name="returnPage" value="profile" />
                     </h:commandButton>
                 </h:form>
                 
-                <h:form id="deleteAccountForm">
+                <h:form id="deleteAccountForm" rendered="#{ user_group.groupName != 'admin' }">
                     <h:commandButton value="Delete My Account"
                                      styleClass="button alert"
                                      action="deleteaccount.xhtml">
-                        <f:param name="userId" value="#{ loginController.user.email }" />
+                        <f:param name="userId" value="#{ user.email }" />
                         <f:param name="returnPage" value="profile" />
                     </h:commandButton>
                 </h:form>
             </h:panelGroup>
             
             <h:panelGroup layout="block" styleClass="cell"
-                          rendered="#{ loginController.userGroup.groupName == 'workers' }">
+                          rendered="#{ user_group.groupName == 'workers' }">
                 <h5>Mobile</h5>
-                <h6>#{ loginController.user.mobile }</h6>
+                <h6>#{ user.mobile }</h6>
                 
                 <h5>Date of Birth</h5>
                 <h6>
-                    <h:outputText value="#{ loginController.user.dob }">
+                    <h:outputText value="#{ user.dob }">
                         <f:convertDateTime pattern="dd-MM-yyyy" />
                     </h:outputText>
                 </h6>
                 
                 <h5>Address</h5>
                 <h6>
-                    #{ loginController.user.address.streetNumber }
-                    #{ loginController.user.address.streetAddress },<br />
-                    #{ loginController.user.address.suburb },<br />
-                    #{ loginController.user.address.state }
-                    #{ loginController.user.address.postcode }
+                    #{ user.address.streetNumber }
+                    #{ user.address.streetAddress },<br />
+                    #{ user.address.suburb },<br />
+                    #{ user.address.state }
+                    #{ user.address.postcode }
                 </h6>
             </h:panelGroup>
 
             <h:panelGroup layout="block" styleClass="cell">
-                <h:form id="profilePlantsForm" rendered="#{ loginController.userGroup.groupName == 'users' }">
+                <h:form id="profilePlantsForm" rendered="#{ user_group.groupName == 'users' }">
                     <h3>Saved Plants</h3>
                     <h:panelGroup layout="block" styleClass="grid-container fluid" style="margin-top: 20px;">
                         <h:panelGroup layout="block" styleClass="grid-x grid-margin-x">
 
-                            <ui:repeat id="featuredRepeat" value="#{ loginController.user.plants.toArray() }" var="plant" varStatus="status">
+                            <ui:repeat id="featuredRepeat" value="#{ user.plants.toArray() }" var="plant" varStatus="status">
                                 <h:panelGroup layout="block" styleClass="cell small-4" style="min-width: 300px; max-width: 300px;">
                                     <ui:include src="/WEB-INF/plantcard.xhtml" />
                                 </h:panelGroup>

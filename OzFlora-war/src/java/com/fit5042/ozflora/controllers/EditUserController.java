@@ -44,6 +44,8 @@ public class EditUserController implements Serializable {
 
     private String password;
     private String confirmPassword;
+    
+    private String returnPage;
 
     /**
      * Creates a new instance of EditUserController
@@ -57,6 +59,7 @@ public class EditUserController implements Serializable {
 
         String userId = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("userId");
         this.user = this.userManagedBean.getUser(userId);
+        this.returnPage = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("returnPage");
     }
 
     private void addFacesErrorMessage(FacesContext context, String clientId, String errorMessage) {
@@ -96,10 +99,10 @@ public class EditUserController implements Serializable {
     }
     
     private String getRedirectString() {
-        if (this.loginController.getUserGroup().getGroupName().equals(UserGroup.USERS_GROUP)) {
+        if (returnPage.equalsIgnoreCase(PageUrl.PROFILE)) {
             return this.loginController.logout();
         }
-        return PageUrl.getPageRedirect(PageUrl.MANAGE_USERS);
+        return PageUrl.getPageRedirect(returnPage);
     }
 
     public String saveUser() {
@@ -118,7 +121,7 @@ public class EditUserController implements Serializable {
     }
 
     public String cancel() {
-        return this.getRedirectString();
+        return PageUrl.getPageRedirect(returnPage);
     }
 
     public User getUser() {
@@ -155,6 +158,14 @@ public class EditUserController implements Serializable {
 
     public void setLoginController(LoginController loginController) {
         this.loginController = loginController;
+    }
+
+    public String getReturnPage() {
+        return returnPage;
+    }
+
+    public void setReturnPage(String returnPage) {
+        this.returnPage = returnPage;
     }
 
 }

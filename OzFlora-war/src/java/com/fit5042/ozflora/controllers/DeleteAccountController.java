@@ -56,6 +56,10 @@ public class DeleteAccountController implements Serializable {
         }
         return PageUrl.getPageRedirect(this.returnPage);
     }
+    
+    public String cancel() {
+        return PageUrl.getPageRedirect(this.returnPage);
+    }
 
     public User getUser() {
         return user;

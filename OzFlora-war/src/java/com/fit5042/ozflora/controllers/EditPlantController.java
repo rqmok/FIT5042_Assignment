@@ -53,7 +53,7 @@ public class EditPlantController implements Serializable {
     
     public String savePlant() {
         this.plantManagedBean.updatePlant(plant);
-        return this.getPlantDetailsRedirect();
+        return getPlantDetailsRedirect();
     }
     
     public String cancelEdit() {

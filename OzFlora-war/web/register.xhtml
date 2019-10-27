@@ -17,7 +17,7 @@
             <f:event type="postValidate" listener="#{ addUserController.validateForm }" />
 
             <h:panelGroup layout="block" styleClass="grid-container">
-                
+
                 <h1>Register</h1>
 
                 <!-- Name -->
@@ -38,7 +38,10 @@
                     </h:panelGroup>
                     <h:panelGroup layout="block" styleClass="small-6 cell">
                         <h:inputText id="email" value="#{ addUserController.email }"
-                                     required="true" requiredMessage="Please enter your email address"></h:inputText>
+                                     required="true" requiredMessage="Please enter your email address"
+                                     validatorMessage="Invalid Email Address">
+                            <f:validateRegex pattern="^(.+)@(.+)(\.)(.+)$" />
+                        </h:inputText>
                     </h:panelGroup>
                 </h:panelGroup>
 

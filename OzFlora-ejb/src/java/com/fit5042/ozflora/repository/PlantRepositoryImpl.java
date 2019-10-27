@@ -5,6 +5,7 @@
  */
 package com.fit5042.ozflora.repository;
 
+import com.fit5042.ozflora.auth.entities.WebsiteUser;
 import com.fit5042.ozflora.repository.entities.Plant;
 import java.util.ArrayList;
 import java.util.List;
@@ -45,6 +46,10 @@ public class PlantRepositoryImpl implements PlantRepository {
         Plant plant = this.searchPlantById(id);
 
         if (plant != null) {
+            for (WebsiteUser user : plant.getWebsiteUsers()) {
+                user.removePlant(plant);
+            }
+            plant.setWebsiteUsers(null);
             this.entityManager.remove(plant);
         }
     }

@@ -14,7 +14,7 @@
         <url-pattern>/faces/*</url-pattern>
     </servlet-mapping>
     <session-config>
-        <session-timeout>300</session-timeout>
+        <session-timeout>30</session-timeout>
         <cookie-config>
             <path>/</path>
             <http-only>true</http-only>
@@ -78,6 +78,7 @@
             <web-resource-name>Restricted Access</web-resource-name>
             <url-pattern>/faces/addplant.xhtml</url-pattern>
             <url-pattern>/faces/editplant.xhtml</url-pattern>
+            <url-pattern>/faces/editworker.xhtml</url-pattern>
         </web-resource-collection>
         <auth-constraint>
             <role-name>workers</role-name>
@@ -93,7 +94,6 @@
         <web-resource-collection>
             <web-resource-name>Restricted Access</web-resource-name>
             <url-pattern>/faces/addworker.xhtml</url-pattern>
-            <url-pattern>/faces/editworker.xhtml</url-pattern>
             <url-pattern>/faces/manageusers.xhtml</url-pattern>
             <url-pattern>/faces/userdetails.xhtml</url-pattern>
         </web-resource-collection>

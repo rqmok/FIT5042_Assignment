@@ -12,26 +12,36 @@
         <ui:include src="/WEB-INF/menu.xhtml" />
 
         <h:panelGroup layout="block" styleClass="grid-container">
-            
+
             <h1>Are you sure?</h1>
-            
+
             <h:panelGroup layout="block" styleClass="grid-y grid-padding-x grid-padding-x">
-                
+
                 <h:panelGroup layout="block" styleClass="cell medium-1">
                     <p>You are attempting to delete the account with email #{ deleteAccountController.user.email }</p>
                     <p>A deleted account can not be recovered.</p>
                 </h:panelGroup>
-                
-                <h:panelGroup layout="block" styleClass="cell small-1">
-                    <h:form id="deleteAccountForm">
-                        <h:commandButton value="Delete Account"
-                                         styleClass="button alert"
-                                         action="#{ deleteAccountController.deleteAccount }" />
-                    </h:form>
+
+                <h:panelGroup layout="block" styleClass="grid-x">
+                    <h:panelGroup layout="block" styleClass="cell small-1">
+                        <h:form id="cancelForm">
+                            <h:commandButton value="Cancel"
+                                             styleClass="button"
+                                             action="#{ deleteAccountController.cancel }" />
+                        </h:form>
+                    </h:panelGroup>
+                    
+                    <h:panelGroup layout="block" styleClass="cell small-1">
+                        <h:form id="deleteAccountForm">
+                            <h:commandButton value="Delete Account"
+                                             styleClass="button alert"
+                                             action="#{ deleteAccountController.deleteAccount }" />
+                        </h:form>
+                    </h:panelGroup>
                 </h:panelGroup>
-                
+
             </h:panelGroup>
-            
+
         </h:panelGroup>
 
         <ui:include src="/WEB-INF/body.xhtml" />

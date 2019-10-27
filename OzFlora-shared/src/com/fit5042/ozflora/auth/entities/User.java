@@ -41,7 +41,7 @@ public abstract class User implements Serializable {
     @Id
     @Column(name = "email", nullable = false, length = 255)
     @NotNull
-    @Pattern(regexp = "^(.+)@(.+)(\\.)(.+)$")
+    @Pattern(regexp = "^(.+)@(.+)(\\.)(.+)$", message = "Invalid email address")
     private String email;
 
     @Column(name = "name", nullable = false, length = 30)

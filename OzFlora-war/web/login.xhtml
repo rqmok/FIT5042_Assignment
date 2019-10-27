@@ -24,7 +24,10 @@
                     </h:panelGroup>
                     <h:panelGroup layout="block" styleClass="small-6 cell">
                         <h:inputText id="email" value="#{ loginController.email }"
-                                     required="true" requiredMessage="Please enter your email address"></h:inputText>
+                                     required="true" requiredMessage="Please enter your email address"
+                                     validatorMessage="Invalid Email Address">
+                            <f:validateRegex pattern="^(.+)@(.+)(\.)(.+)$" />
+                        </h:inputText>
                     </h:panelGroup>
                 </h:panelGroup>
 

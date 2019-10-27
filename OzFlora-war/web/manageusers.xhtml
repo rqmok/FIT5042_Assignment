@@ -86,6 +86,7 @@
                 <h:form id="editUserLinkForm" rendered="#{ groupName != 'admin' }">
                     <h:commandButton styleClass="button" value="Edit" action="editworker.xhtml" rendered="#{ groupName == 'workers' }">
                         <f:param name="userId" value="#{ user.email }" />
+                        <f:param name="returnPage" value="manageusers" />
                     </h:commandButton>
                     <h:commandButton styleClass="button" value="Edit" action="editwebsiteuser.xhtml" rendered="#{ groupName == 'users' }">
                         <f:param name="userId" value="#{ user.email }" />

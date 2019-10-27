@@ -31,7 +31,7 @@ public class UserGroup implements Serializable {
     @Id
     @Column(name = "email", nullable = false, length = 255)
     @NotNull
-    @Pattern(regexp = "^(.+)@(.+)(\\.)(.+)$")
+    @Pattern(regexp = "^(.+)@(.+)(\\.)(.+)$", message = "Invalid email address")
     private String email;
 
     @Column(name = "groupname", nullable = false, length = 32)
