@@ -25,6 +25,15 @@
                         <f:param name="userId" value="#{ loginController.user.email }" />
                     </h:commandButton>
                 </h:form>
+                
+                <h:form id="deleteAccountForm">
+                    <h:commandButton value="Delete My Account"
+                                     styleClass="button alert"
+                                     action="deleteaccount.xhtml">
+                        <f:param name="userId" value="#{ loginController.user.email }" />
+                        <f:param name="returnPage" value="profile" />
+                    </h:commandButton>
+                </h:form>
             </h:panelGroup>
             
             <h:panelGroup layout="block" styleClass="cell"

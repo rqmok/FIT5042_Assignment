@@ -95,8 +95,11 @@
 
             <h:column>
                 <h:form id="deleteuserLinkForm" rendered="#{ groupName != 'admin' }">
-                    <h:commandButton styleClass="alert button" value="Delete" action="#{ manageUsersController.removeUser(user) }">
-                        <f:ajax execute="@form" render="usersTable" />
+                    <h:commandButton styleClass="alert button"
+                                     value="Delete"
+                                     action="deleteaccount.xhtml">
+                        <f:param name="userId" value="#{ user.email }" />
+                        <f:param name="returnPage" value="manageusers" />
                     </h:commandButton>
                 </h:form>
             </h:column>
