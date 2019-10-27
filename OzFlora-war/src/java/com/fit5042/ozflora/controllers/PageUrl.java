@@ -30,4 +30,6 @@ public final class PageUrl {
     public static String EDIT_WEBSITE_USER = "editwebsiteuser";
     
     public static String PLANTS = "plants";
+    
+    public static String PROFILE = "profile";
 }

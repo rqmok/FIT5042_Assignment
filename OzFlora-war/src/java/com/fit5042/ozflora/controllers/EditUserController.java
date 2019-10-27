@@ -7,6 +7,7 @@ package com.fit5042.ozflora.controllers;
 
 import com.fit5042.ozflora.auth.AuthenticationUtils;
 import com.fit5042.ozflora.auth.entities.User;
+import com.fit5042.ozflora.auth.entities.UserGroup;
 import com.fit5042.ozflora.mbeans.UserManagedBean;
 import java.io.Serializable;
 import java.io.UnsupportedEncodingException;
@@ -35,6 +36,9 @@ public class EditUserController implements Serializable {
 
     @ManagedProperty(value = "#{ userManagedBean }")
     private final UserManagedBean userManagedBean;
+    
+    @ManagedProperty(value = "#{ loginController }")
+    private LoginController loginController;
 
     private User user;
 
@@ -48,6 +52,8 @@ public class EditUserController implements Serializable {
         ELContext elContext = FacesContext.getCurrentInstance().getELContext();
         this.userManagedBean = (UserManagedBean) FacesContext.getCurrentInstance().getApplication()
                 .getELResolver().getValue(elContext, null, "userManagedBean");
+        this.loginController = (LoginController) FacesContext.getCurrentInstance().getApplication()
+                .getELResolver().getValue(elContext, null, "loginController");
 
         String userId = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("userId");
         this.user = this.userManagedBean.getUser(userId);
@@ -89,7 +95,10 @@ public class EditUserController implements Serializable {
         }
     }
     
-    private String getManagedUsersRedirect() {
+    private String getRedirectString() {
+        if (this.loginController.getUserGroup().getGroupName().equals(UserGroup.USERS_GROUP)) {
+            return this.loginController.logout();
+        }
         return PageUrl.getPageRedirect(PageUrl.MANAGE_USERS);
     }
 
@@ -105,11 +114,11 @@ public class EditUserController implements Serializable {
 
             this.userManagedBean.saveUser(user);
         }
-        return this.getManagedUsersRedirect();
+        return this.getRedirectString();
     }
 
     public String cancel() {
-        return this.getManagedUsersRedirect();
+        return this.getRedirectString();
     }
 
     public User getUser() {
@@ -138,6 +147,14 @@ public class EditUserController implements Serializable {
 
     public void setConfirmPassword(String confirmPassword) {
         this.confirmPassword = confirmPassword;
+    }
+
+    public LoginController getLoginController() {
+        return loginController;
+    }
+
+    public void setLoginController(LoginController loginController) {
+        this.loginController = loginController;
     }
 
 }

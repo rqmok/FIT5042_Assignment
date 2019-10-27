@@ -59,6 +59,7 @@
         <web-resource-collection>
             <web-resource-name>Restricted Access</web-resource-name>
             <url-pattern>/faces/profile.xhtml</url-pattern>
+            <url-pattern>/faces/editwebsiteuser.xhtml</url-pattern>
         </web-resource-collection>
         <auth-constraint>
             <role-name>users</role-name>
@@ -92,7 +93,6 @@
             <web-resource-name>Restricted Access</web-resource-name>
             <url-pattern>/faces/addworker.xhtml</url-pattern>
             <url-pattern>/faces/editworker.xhtml</url-pattern>
-            <url-pattern>/faces/editwebsiteuser.xhtml</url-pattern>
             <url-pattern>/faces/manageusers.xhtml</url-pattern>
             <url-pattern>/faces/userdetails.xhtml</url-pattern>
         </web-resource-collection>
