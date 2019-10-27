@@ -8,7 +8,6 @@ package com.fit5042.ozflora.repository;
 import com.fit5042.ozflora.repository.entities.Plant;
 import java.util.ArrayList;
 import java.util.List;
-import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -24,7 +23,6 @@ import javax.persistence.criteria.Root;
  * @author Zeeshan
  */
 @Stateless
-@LocalBean
 public class PlantRepositoryImpl implements PlantRepository {
 
     @PersistenceContext(unitName = "OzFlora-ejbPU")
